@@ -18,7 +18,8 @@ export interface ContextPropsProfile {
 export const initialProps: ContextPropsProfile = {
   steps: [
     { key: 1, disabled: true },
-    { key: 2, disabled: true },
+    { key: 2, disabled: false },
+    { key: 3, disabled: false },
   ],
   setvalidSteps: null,
   // setprofile: null,

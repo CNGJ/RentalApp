@@ -6,6 +6,7 @@ import { Step } from "../lib/Step";
 import { StepWizardProps } from "react-step-wizard";
 import { DataPublication } from "../components/StepOnePublication";
 import { StepTwoPublication } from "../components/StepTwoPublication";
+import { StepThreePublication } from "../components/StepThreePublication";
 
 const newPublication = () => {
   const [state, updateState] = useState({
@@ -40,9 +41,11 @@ const newPublication = () => {
           title={"Creemos tu nueva publicacion"}
           children={<DataPublication />}
         />
-        <Step title={"Servicios y caracteristicas de tu alojamiento"}
+        <Step
+          title={"Servicios y caracteristicas de tu alojamiento"}
           children={<StepTwoPublication />}
         />
+        <Step title={"Precio"} children={<StepThreePublication />} />
       </StepWizard>
     </>
   );
