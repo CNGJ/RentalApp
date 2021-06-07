@@ -13,6 +13,7 @@ interface ISelectProps {
   formik: any;
   name: string;
   isMulti?: boolean;
+  width?: string;
 }
 
 export const SelectField: FC<ISelectProps> = ({
@@ -21,8 +22,9 @@ export const SelectField: FC<ISelectProps> = ({
   placeholder,
   name,
   isMulti,
+  width,
 }) => (
-  <WrapperSelect>
+  <WrapperSelect width={width}>
     <Select
       styles={!isMulti ? customStylesSelect : customStylesSelectMulti}
       name={name}

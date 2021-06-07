@@ -1,20 +1,27 @@
 import React, { useEffect, useContext } from "react";
-import Input from "../../lib/Input";
-import { DataContainer, Title } from "./styles";
+import {
+  DataContainer,
+  Title,
+  WrapperCounters,
+  WrapperFeatures,
+} from "./styles";
 import { useFormik } from "formik";
 // import { ValidationsData } from "./validations";
-import Select, { Option } from "react-select";
-import { theme } from "../../theme";
 import { PublicationContext } from "../../Context/PublicationContext";
 import { SelectField } from "../../lib/Select";
-import RadioButton from "../../lib/RadioButton";
+
 import { v4 as uuidv4 } from "uuid";
+import { Counter } from "../Counter";
 
 export const StepTwoPublication = () => {
   const { setvalidSteps, steps } = useContext(PublicationContext);
 
   const initialValues = {
     services: [],
+    environments: 0,
+    bedrooms: 0,
+    toilets: 0,
+    kitchen: 0,
   };
 
   const Services = [
@@ -64,6 +71,38 @@ export const StepTwoPublication = () => {
           placeholder={"Selecciona los servicios de tu alojamiento"}
           isMulti={true}
         />
+
+        <WrapperFeatures>
+          <Title>Caracteristicas de tu alojamiento</Title>
+          <WrapperCounters>
+            <Counter
+              label={"Ambientes"}
+              name={"environments"}
+              value={formik.values.environments}
+              onChange={formik.setFieldValue}
+            />
+            <Counter
+              label={"Habitaciones"}
+              name={"bedrooms"}
+              value={formik.values.bedrooms}
+              onChange={formik.setFieldValue}
+            />
+          </WrapperCounters>
+          <WrapperCounters>
+            <Counter
+              label={"Baños"}
+              name={"toilets"}
+              value={formik.values.toilets}
+              onChange={formik.setFieldValue}
+            />
+            <Counter
+              label={"Cocinas"}
+              name={"kitchen"}
+              value={formik.values.kitchen}
+              onChange={formik.setFieldValue}
+            />
+          </WrapperCounters>
+        </WrapperFeatures>
       </DataContainer>
     </>
   );

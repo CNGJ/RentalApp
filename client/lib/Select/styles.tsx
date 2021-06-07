@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { theme } from "../../theme";
 
 export const WrapperSelect = styled.div`
-  width: 100%;
+  width: ${({ width }) => (width ? width : "100%")};
   margin-right: 1px;
   margin-left: 1px;
 `;
@@ -29,7 +29,7 @@ export const customStylesSelect = {
     color: "white;",
   }),
   multiValueLabel: (provided, state) => ({
-    ...provided,    
+    ...provided,
     color: "white;",
   }),
 };
@@ -37,11 +37,11 @@ export const customStylesSelect = {
 export const customStylesSelectMulti = {
   container: (provided, state) => ({
     ...provided,
-    boxShadow: "rgb(0 0 0 / 20%) 0px 2px 5px;",    
+    boxShadow: "rgb(0 0 0 / 20%) 0px 2px 5px;",
     borderRadius: "0.5rem;",
   }),
   control: (provided, state) => ({
-    ...provided,    
+    ...provided,
     borderRadius: "0.5rem;",
   }),
   placeholder: (provided, state) => ({
@@ -54,7 +54,7 @@ export const customStylesSelectMulti = {
     color: "white;",
   }),
   multiValueLabel: (provided, state) => ({
-    ...provided,    
+    ...provided,
     color: "white;",
   }),
 };
