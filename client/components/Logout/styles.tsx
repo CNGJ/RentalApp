@@ -20,7 +20,7 @@ export const ButtonsLogout = styled.div`
 export const ConfirmationButton = styled.button<{ primary: boolean }>`
   height: 40px;
   width: 70px;
-  border-radius: 10%;
+  border-radius: 2rem;
   font-size: 1.5rem;
   color: ${theme.White};
   background: ${({ primary }) => (primary ? theme.Terciary : theme.Gray)};
