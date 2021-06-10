@@ -6,7 +6,7 @@ export const ModalWrapper = styled.div`
   position: fixed;
   z-index: 500;
   background-color: white;
-  width: 50%;  
+  width: 50%;
   border: 1px solid #ccc;
   box-shadow: 1px 1px 1px black;
   padding: 5px;
