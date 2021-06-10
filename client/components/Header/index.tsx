@@ -19,6 +19,7 @@ import Link from "next/link";
 import { ModalContext } from "../../Context/ModalContext";
 import { ProfileContext } from "../../Context/ProfileContext";
 import { Login } from "../Login";
+import { Logout } from "../Logout";
 
 interface IHeaderProps {
   fixed?: boolean;
@@ -45,9 +46,11 @@ const Header: FC<IHeaderProps> = ({ fixed }) => {
   };
 
   const logOut = () => {
-    localStorage.removeItem("travel-token");
-    refetch();
-    ToastInfo("Has finalizado sesion");
+    setShowModal(!showModal);
+    setInfoModal({
+      children: <Logout />,
+      title: "Cerrar sesión",
+    });
   };
 
   const goHome = () => {
