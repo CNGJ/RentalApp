@@ -2,8 +2,7 @@ import styled from "styled-components";
 import { theme } from "../../theme/index";
 
 export const WrapperLogout = styled.div`
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 25px;
 `;
 
 export const QuestionLogout = styled.div`

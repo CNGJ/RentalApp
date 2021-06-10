@@ -6,16 +6,20 @@ export const ModalWrapper = styled.div`
   position: fixed;
   z-index: 500;
   background-color: white;
-  width: 50%;
   border: 1px solid #ccc;
   box-shadow: 1px 1px 1px black;
   padding: 5px;
-  left: 25%;
   border-radius: 11px;
   top: 4%;
   box-sizing: border-box;
   transition: all 0.3s ease-out;
   // overflow-y: scroll;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  min-height: 10em;
+  width: fit-content;
 `;
 
 export const BackdropWrap = styled.div`
