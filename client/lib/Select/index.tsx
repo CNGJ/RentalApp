@@ -32,7 +32,14 @@ export const SelectField: FC<ISelectProps> = ({
       isMulti={isMulti}
       placeholder={placeholder}
       onChange={(option: Option) => {
-        formik.setValues({ ...formik.values, [name]: option.value });
+        if (!isMulti) {
+          formik.setValues({ ...formik.values, [name]: option.value });
+        } else {
+          formik.setValues({
+            ...formik.values,
+            [name]: option,
+          });
+        }
       }}
       value={
         !isMulti

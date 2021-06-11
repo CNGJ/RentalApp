@@ -10,7 +10,7 @@ export const ModalWrapper = styled.div`
   box-shadow: 1px 1px 1px black;
   padding: 5px;
   border-radius: 11px;
-  top: 4%;
+  top: 5%;
   box-sizing: border-box;
   transition: all 0.3s ease-out;
   // overflow-y: scroll;

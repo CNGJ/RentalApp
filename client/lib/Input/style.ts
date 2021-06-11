@@ -21,6 +21,12 @@ export default styled.input`
   &:focus {
     border: none;
   }
+
+  ::-webkit-outer-spin-button,
+  ::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 `;
 
 export const InputContainer = styled.div<{

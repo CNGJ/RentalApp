@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../components/Header";
+import Header from "../components/Home/Header";
 import Input from "../lib/Input";
 
 const Profile = () => {

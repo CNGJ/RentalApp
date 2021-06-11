@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import StepWizard from "react-step-wizard";
 
-import Header from "../components/Header";
+import Header from "../components/Home/Header";
 import { Step } from "../lib/Step";
 import { StepWizardProps } from "react-step-wizard";
-import { DataPublication } from "../components/StepOnePublication";
-import { StepTwoPublication } from "../components/StepTwoPublication";
-import { StepThreePublication } from "../components/StepThreePublication";
+import { DataPublication } from "../components/newPublicationSteps/StepOnePublication";
+import { StepTwoPublication } from "../components/newPublicationSteps/StepTwoPublication";
+import { StepThreePublication } from "../components/newPublicationSteps/StepThreePublication";
 
 const newPublication = () => {
   const [state, updateState] = useState({

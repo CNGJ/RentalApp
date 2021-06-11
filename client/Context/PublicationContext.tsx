@@ -13,15 +13,26 @@ interface Istep {
 export interface ContextPropsProfile {
   steps?: any;
   setvalidSteps: (a: any) => void;
+  setnewPublication: (a: any) => void;
+}
+
+interface Publication {
+  name: string;
+  location: any;
+  price: number;
+  services: string[];
+  terms: any;
+  features: any;
 }
 
 export const initialProps: ContextPropsProfile = {
   steps: [
     { key: 1, disabled: true },
-    { key: 2, disabled: false },
+    { key: 2, disabled: true },
     { key: 3, disabled: false },
   ],
   setvalidSteps: null,
+  setnewPublication: null,
   // setprofile: null,
 };
 
@@ -29,6 +40,11 @@ const PublicationContext = createContext(initialProps);
 
 const PublicationProvider: FC = ({ children }) => {
   const [validSteps, setvalidSteps] = useState(initialProps.steps);
+  const [newPublication, setnewPublication] = useState<any>(null);
+
+  useEffect(() => {
+    console.log("newPublication", newPublication);
+  }, [newPublication]);
 
   // const { data, error, loading, refetch } = useQuery(GET_USER);
 
@@ -37,6 +53,7 @@ const PublicationProvider: FC = ({ children }) => {
       value={{
         steps: validSteps,
         setvalidSteps,
+        setnewPublication,
         // setprofile,
       }}
     >
