@@ -29,6 +29,13 @@ export const Button = styled.button`
   :hover {
     background: ${theme.Orange};
   }
+
+  :disabled {
+  border: 1px solid #999999;
+  background-color: ${theme.Orange_Opacity};
+  color: ${theme.Gray};
+  cursor: not-allowed;
+}
 `;
 
 export const OverlayBox = styled.div<{ content: JSX.Element }>`

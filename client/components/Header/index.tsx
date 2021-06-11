@@ -1,6 +1,6 @@
 import React, { useContext, FC, useEffect } from "react";
 import { User, Group } from "../../Icons";
-import SearchBox from "../SearchBar";
+import SearchBar from "../SearchBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Icon, WrapperHeader, WrapperIcons } from "./styles";
 import { theme } from "../../theme";
@@ -65,7 +65,7 @@ const Header: FC<IHeaderProps> = ({ fixed }) => {
           icon={faUserAstronaut}
           style={{ color: `${theme.Primary}`, cursor: "pointer" }}
         />
-        <SearchBox />
+        <SearchBar />
 
         <WrapperIcons>
           <Icon onClick={handleProfile} tooltip={profile ? profile.name : null}>
