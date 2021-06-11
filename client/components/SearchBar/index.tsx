@@ -46,7 +46,7 @@ const SearchBox = () => {
         <InputGuests state={guest} setstate={setguest} />
       </InputBox>
       <InputBox>
-        <Button type="submit">
+        <Button type="submit" disabled={!destino}>
           <FontAwesomeIcon icon={faSearch} />
         </Button>
       </InputBox>
