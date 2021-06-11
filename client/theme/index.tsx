@@ -8,5 +8,6 @@ export const theme = {
   Blue2: "#17375B",
   White: "#ffff",
   Orange: "	#F96B45",
+  Orange_Opacity: "#ff6347cc",
   Gray: "#666"
 };

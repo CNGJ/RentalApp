@@ -1,6 +1,5 @@
 import React, { useContext, FC, useEffect } from "react";
 import { User, Group } from "../../../Icons";
-import SearchBox from "../SearchBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Icon, WrapperHeader, WrapperIcons } from "./styles";
 import { theme } from "../../../theme";
@@ -8,18 +7,15 @@ import { useRouter } from "next/router";
 import {
   faUser,
   faUserAstronaut,
-  faUserCircle,
-  faUserCog,
-  faUsers,
   faPowerOff,
   faFolderPlus,
-  faUserFriends,
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { ModalContext } from "../../../Context/ModalContext";
 import { ProfileContext } from "../../../Context/ProfileContext";
 import { Login } from "../../UserSession/Login";
 import { Logout } from "../../UserSession/Logout";
+import SearchBar from "../SearchBar";
 
 interface IHeaderProps {
   fixed?: boolean;
@@ -65,7 +61,7 @@ const Header: FC<IHeaderProps> = ({ fixed }) => {
           icon={faUserAstronaut}
           style={{ color: `${theme.Primary}`, cursor: "pointer" }}
         />
-        <SearchBox />
+        <SearchBar />
 
         <WrapperIcons>
           <Icon onClick={handleProfile} tooltip={profile ? profile.name : null}>
