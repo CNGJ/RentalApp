@@ -26,9 +26,9 @@ export const FormWrapper = styled.form`
 
 export const Button = styled.button`
   justify-content: center;
-  width: 30%;
+  width: 50%;
   padding: 0.8rem;
-  border: none;  
+  border: none;
   border-radius: 2rem;
   margin-top: 1rem;
   background: ${theme.Terciary};
@@ -41,4 +41,8 @@ export const Button = styled.button`
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
+`;
+
+export const LoginWrapper = styled.div`
+  padding: 25px;
 `;

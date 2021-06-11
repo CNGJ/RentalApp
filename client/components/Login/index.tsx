@@ -6,6 +6,7 @@ import {
   FormWrapper,
   Button,
   ButtonContainer,
+  LoginWrapper,
 } from "./styles";
 import { faUserAstronaut, faUserEdit } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -98,7 +99,7 @@ export const Login = () => {
   });
 
   return (
-    <>
+    <LoginWrapper>
       {!Usernew ? (
         <FormWrapper onSubmit={formikLogin.handleSubmit}>
           <Title>
@@ -239,6 +240,6 @@ export const Login = () => {
           ? "¿No tienes cuenta? registrate aqui."
           : "¿Ya tienes cuenta? Inicia sesion aqui. "}
       </Subtitle>
-    </>
+    </LoginWrapper>
   );
 };
