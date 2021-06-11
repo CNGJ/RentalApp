@@ -21,6 +21,12 @@ export default styled.input`
   &:focus {
     border: none;
   }
+
+  ::-webkit-outer-spin-button,
+  ::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 `;
 
 export const InputContainer = styled.div<{
@@ -28,6 +34,7 @@ export const InputContainer = styled.div<{
   placeholder;
   hasValue;
   width;
+  marginB;
 }>`
   background-color: ${({ disabled }) => (disabled ? "#dadada" : "#ffffff")};
   pointer-events: ${({ disabled }) => (disabled ? "none" : "")};
@@ -35,7 +42,7 @@ export const InputContainer = styled.div<{
   width: ${({ width }) => (width ? `${width}px` : "100%")};
   position: relative;
   border-radius: 4px 4px 0 0;
-  margin-bottom: 1.4rem;
+  margin-bottom: ${({ marginB }) => (marginB ? `${marginB}px` : "1.4rem")};
   box-shadow: rgb(0 0 0 / 20%) 0px 2px 5px;
   &::before {
     position: absolute;

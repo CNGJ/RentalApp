@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../components/Header";
+import Header from "../components/Home/Header";
 import Image from "next/image";
 import {
   HomeTitle,
@@ -11,9 +11,9 @@ import {
   WrapperCards,
   SubTitleCards,
 } from "../components/common/styles";
-import { Boxtype } from "../components/Boxtype";
-import { Card } from "../components/Cards";
-import { CardImage } from "../components/CardImage";
+import { Boxtype } from "../components/Home/Boxtype";
+import { Card } from "../components/Home/Cards";
+import { CardImage } from "../components/Home/CardImage";
 
 export default function Home() {
   return (

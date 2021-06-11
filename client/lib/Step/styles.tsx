@@ -14,7 +14,7 @@ export const StepContainer = styled.div`
   width: 50%;
   padding: 2rem;
   border-radius: 0.5rem;
-  height: 55vh;
+  height: 50vh;
   background: #ffff;
   box-shadow: -5px 8px 8px -6px black;
   margin-top: 4rem;

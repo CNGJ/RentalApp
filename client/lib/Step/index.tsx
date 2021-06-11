@@ -12,6 +12,7 @@ import { PublicationContext } from "../../Context/PublicationContext";
 interface StepProps extends StepWizardChildProps {
   title?: string;
   children?: JSX.Element;
+  nextAction?: () => void;
 }
 
 export const Step: FC<StepProps> = (props) => {
@@ -28,6 +29,14 @@ export const Step: FC<StepProps> = (props) => {
     totalSteps,
   } = props;
 
+  const handleNext = () => {
+    if (props.nextAction) {
+      console.log(props.nextAction, "jeje");
+    } else {
+      nextStep();
+    }
+  };
+
   return (
     <>
       <WrapperStep>
@@ -40,7 +49,10 @@ export const Step: FC<StepProps> = (props) => {
           {!(currentStep === 1) && (
             <Button onClick={previousStep}> Volver </Button>
           )}
-          <Button onClick={nextStep} disabled={steps[currentStep - 1].disabled}>
+          <Button
+            onClick={handleNext}
+            disabled={steps[currentStep - 1].disabled}
+          >
             Continuar
           </Button>
         </ContainerButtonOut>
