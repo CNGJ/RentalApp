@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { theme } from "../../theme";
 
 export const DataContainer = styled.form`
   padding: 1rem;
@@ -20,4 +21,19 @@ export const WrapperCounters = styled.div`
 
 export const WrapperFeatures = styled.div`
   margin-top: 2rem;
+`;
+
+export const WrapperPrice = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const Price = styled.p`
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1.1;
+  margin: 0;
+  color: ${theme.Primary};
+  margin-right: 5rem;
 `;

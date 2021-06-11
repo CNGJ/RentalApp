@@ -21,7 +21,7 @@ const options = [
 
 export const Boxtype = () => {
   return (
-    <WrapperBoxType>
+    <WrapperBoxType  >
       <ContainerTypes>
         {options.map((option, i) => (
           <Icon key={uuidv4()} isLast={options.length === i + 1}>

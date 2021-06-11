@@ -4,6 +4,8 @@ import {
   Title,
   WrapperCounters as WrapperTerms,
   WrapperFeatures,
+  WrapperPrice,
+  Price,
 } from "./styles";
 import { useFormik } from "formik";
 // import { ValidationsData } from "./validations";
@@ -69,22 +71,25 @@ export const StepThreePublication = () => {
   return (
     <>
       <DataContainer onSubmit={formik.handleSubmit}>
-        {/* <Title>Precio de tu publicacion</Title> */}
-        <Input
-          name={"price"}
-          message={
-            formik.errors.price && formik.touched.price
-              ? { text: formik.errors.price, type: "error" }
-              : null
-          }
-          width={"350"}
-          type="number"
-          placeholder={"Precio"}
-          disabled={false}
-          onChange={formik.handleChange}
-          value={formik.values.price}
-          onBlur={formik.handleBlur}
-        />
+        <WrapperPrice>
+          <Input
+            name={"price"}
+            message={
+              formik.errors.price && formik.touched.price
+                ? { text: formik.errors.price.toString(), type: "error" }
+                : null
+            }
+            width={"350"}
+            type="number"
+            marginB={"0"}
+            placeholder={"Precio"}
+            disabled={false}
+            onChange={formik.handleChange}
+            value={formik.values.price}
+            onBlur={formik.handleBlur}
+          />
+          <Price> {formik.values.price ? formik.values.price : "0.00"} </Price>
+        </WrapperPrice>
 
         <WrapperFeatures>
           <Title>

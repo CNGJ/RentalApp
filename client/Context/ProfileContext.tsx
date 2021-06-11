@@ -33,7 +33,7 @@ const ProfileContext = createContext(initialProps);
 const ProfileProvider: FC = ({ children }) => {
   const [profile, setprofile] = useState(initialProps.profile);
 
-  const { data, error, loading, refetch } = useQuery(GET_USER);
+  const { data, error, loading, refetch  } = useQuery(GET_USER);
 
   useEffect(() => {
     console.log(data, "data");

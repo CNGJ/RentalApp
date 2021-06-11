@@ -36,7 +36,7 @@ export const CardSearch = () => {
           }}
         >
           <FontAwesomeIcon icon={faHeart} size="lg" />
-        </Fav>
+        </Fav>        
         <ImgCard src="/house1.jpg" alt="Picture of the author" />
         <div style={{ position: "relative" }}>
           <Type>Casa</Type>

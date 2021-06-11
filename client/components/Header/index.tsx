@@ -78,7 +78,7 @@ const Header: FC<IHeaderProps> = ({ fixed }) => {
               style={{ color: `${theme.Primary}` }}
             />
           </Icon> */}
-          {profile && (
+          {true && (
             <>
               <Icon onClick={handleNewPublication}>
                 <FontAwesomeIcon
