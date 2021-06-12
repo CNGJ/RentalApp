@@ -42,10 +42,11 @@ export const Price = styled.p`
 export const FinalPrice = styled.p`
   color: ${theme.Terciary};
   font-size: 15px;
-  font-weight: 300;
+  font-weight: 450;
   line-height: 1.1;
   margin: 0;
   margin-right: 5rem;
-  color: ${theme.Primary};
+  margin-top: 8px;
+  color: ${theme.Terciary};
   text-align: center;
 `;

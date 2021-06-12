@@ -5,20 +5,25 @@ import {
   Title,
   ContainerButtonOut,
   Button,
+  SpinnerContainer,
 } from "./styles";
 import { StepWizardChildProps } from "react-step-wizard";
 import { PublicationContext } from "../../Context/PublicationContext";
+import { FetchResult } from "@apollo/client";
+import PacmanLoader from "react-spinners/PacmanLoader";
+import { theme } from "../../theme";
 
 interface StepProps extends StepWizardChildProps {
   title?: string;
   children?: JSX.Element;
   nextAction?: () => void;
+  onSubmit?: any;
+  paramSubmit?: any;
 }
 
 export const Step: FC<StepProps> = (props) => {
-  // console.log("props", props);
   const { steps } = useContext(PublicationContext);
-  const [disabledNext, setdisabledNext] = useState(true);
+  const [loading, setLoading] = useState(false);
   const {
     currentStep,
     firstStep,
@@ -27,11 +32,21 @@ export const Step: FC<StepProps> = (props) => {
     nextStep,
     previousStep,
     totalSteps,
+    paramSubmit,
+    onSubmit,
   } = props;
 
-  const handleNext = () => {
-    if (props.nextAction) {
-      console.log(props.nextAction, "jeje");
+  const handleNext = async () => {
+    if (currentStep === totalSteps - 1) {
+      try {
+        setLoading(true);
+        const { data } = await onSubmit(paramSubmit);
+        setTimeout(() => {
+          console.log("data", data);
+          setLoading(false);
+          nextStep();
+        }, 1000);
+      } catch (error) {}
     } else {
       nextStep();
     }
@@ -42,20 +57,27 @@ export const Step: FC<StepProps> = (props) => {
       <WrapperStep>
         <StepContainer>
           <Title> {props.title}</Title>
-          {props.children}
+
+          {!loading && <> {props.children} </>}
+
+          <SpinnerContainer>
+            <PacmanLoader color={theme.Terciary} loading={loading} size={70} />
+          </SpinnerContainer>
         </StepContainer>
 
-        <ContainerButtonOut first={currentStep === 1}>
-          {!(currentStep === 1) && (
-            <Button onClick={previousStep}> Volver </Button>
-          )}
-          <Button
-            onClick={handleNext}
-            disabled={steps[currentStep - 1].disabled}
-          >
-            Continuar
-          </Button>
-        </ContainerButtonOut>
+        {!(totalSteps === currentStep) && (
+          <ContainerButtonOut first={currentStep === 1}>
+            {!(currentStep === 1) && (
+              <Button onClick={previousStep}> Volver </Button>
+            )}
+            <Button
+              onClick={handleNext}
+              disabled={steps[currentStep - 1].disabled}
+            >
+              {currentStep === totalSteps - 1 ? "Finalizar" : "Continuar"}
+            </Button>
+          </ContainerButtonOut>
+        )}
       </WrapperStep>
     </>
   );

@@ -72,7 +72,13 @@ export const DataPublication = () => {
   }, [formik.errors]);
 
   useEffect(() => {
-    setnewPublication((prev) => ({ ...prev, ...formik.values }));
+    const { name, street, number, province, location, accommodation } =
+      formik.values;
+    setnewPublication((prev) => ({
+      ...prev,
+      name,
+      location: { street, number, location, province },
+    }));
   }, [formik.values]);
 
   return (

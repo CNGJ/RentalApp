@@ -9,7 +9,6 @@ import { useFormik } from "formik";
 import { ValidationsData } from "./validations";
 import { PublicationContext } from "../../../Context/PublicationContext";
 import { SelectField } from "../../../lib/Select";
-
 import { v4 as uuidv4 } from "uuid";
 import { Counter } from "../../../lib/Counter";
 
@@ -24,6 +23,8 @@ export const StepTwoPublication = () => {
     toilets: 1,
     kitchen: 0,
   };
+
+  //#region MOCK ZONE
 
   const Services = [
     { value: "Wifi", label: "Wifi" },
@@ -40,6 +41,8 @@ export const StepTwoPublication = () => {
     { value: "Camaras", label: "Cámaras de seguridad en la propiedad" },
   ];
 
+  //#endregion
+
   const formik = useFormik({
     initialValues,
     validationSchema: ValidationsData,
@@ -49,20 +52,20 @@ export const StepTwoPublication = () => {
   });
 
   useEffect(() => {
-    if (
-      Object.values(formik.errors).length === 0 &&
-      formik.values !== formik.initialValues
-    ) {
-      const disabedSteps = [...steps];
-      disabedSteps[0].disabled = false;
-      setvalidSteps(disabedSteps);
-    }
-  }, [formik.errors]);
+    validateStep(formik, steps, setvalidSteps);
+    const { services, environments, bedrooms, toilets, kitchen } =
+      formik.values;
 
-  useEffect(() => {
-    console.log(formik.values, "values");
+    const filterService = services.reduce((acc, el) => {
+      acc.push(el.value);
+      return acc;
+    }, []);
 
-    setnewPublication((prev) => ({ ...prev, ...formik.values }));
+    setnewPublication((prev) => ({
+      ...prev,
+      features: { bedrooms, toilets, environments, kitchen },
+      services: filterService,
+    }));
   }, [formik.values]);
 
   return (
@@ -115,3 +118,16 @@ export const StepTwoPublication = () => {
     </>
   );
 };
+function validateStep(formik, steps: any, setvalidSteps: (a: any) => void) {
+  if (formik.values.services.length > 0) {
+    const disabedSteps = [...steps];
+    disabedSteps[1].disabled = false;
+    setvalidSteps(disabedSteps);
+  } else {
+    if (!steps[1].disabled) {
+      const disabedSteps = [...steps];
+      disabedSteps[1].disabled = true;
+      setvalidSteps(disabedSteps);
+    }
+  }
+}
