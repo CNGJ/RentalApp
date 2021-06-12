@@ -9,7 +9,7 @@ import {
   FinalPrice,
 } from "./styles";
 import { useFormik } from "formik";
-// import { ValidationsData } from "./validations";
+import { ValidationsData } from "./validations";
 import { PublicationContext } from "../../../Context/PublicationContext";
 import { SelectField } from "../../../lib/Select";
 
@@ -18,17 +18,21 @@ import { Counter } from "../../../lib/Counter";
 import Input from "../../../lib/Input";
 
 export const StepThreePublication = () => {
-  const { setvalidSteps, steps } = useContext(PublicationContext);
+  const { setvalidSteps, steps, setnewPublication } =
+    useContext(PublicationContext);
 
   const initialValues = {
     price: null,
     adults: 1,
-    sex: "",
+    sex: "Ambos",
     kids: 0,
     kidsOption: "",
     pets: 0,
     pestType: "",
   };
+
+  //#region MOCK ZONE
+  /** Esto tiene que venir del back */
 
   const optionsSex = [
     { value: "Ambos", label: "Ambos " },
@@ -48,9 +52,12 @@ export const StepThreePublication = () => {
     { value: "Otros", label: "Otros" },
   ];
 
+  /** */
+  //#endregion
+
   const formik = useFormik({
     initialValues,
-    // validationSchema: ValidationsData,
+    validationSchema: ValidationsData,
     onSubmit: async (values) => {
       console.log("values", values);
     },
@@ -62,19 +69,37 @@ export const StepThreePublication = () => {
   });
 
   useEffect(() => {
-    if (
+    const isValid =
       Object.values(formik.errors).length === 0 &&
-      formik.values !== formik.initialValues
-    ) {
-      console.log("entre");
+      formik.values !== formik.initialValues;
 
+    console.log("isValid", isValid);
+    console.log("2", Object.values(formik.errors).length);
+    console.log("3", formik.values);
+
+    if (isValid) {
       const pepe = [...steps];
-      pepe[0].disabled = false;
+      pepe[2].disabled = false;
       setvalidSteps(pepe);
+    } else {
+      if (!steps[2].disabled) {
+        const disabedSteps = [...steps];
+        disabedSteps[2].disabled = true;
+        setvalidSteps(disabedSteps);
+      }
     }
   }, [formik.errors]);
 
+  const { price, adults, sex, kids, kidsOption, pets, pestType } =
+    formik.values;
 
+  useEffect(() => {
+    setnewPublication((prev) => ({
+      ...prev,
+      price,
+      terms: { adults, kids, pets, sex },
+    }));
+  }, [formik.values]);
 
   return (
     <>
@@ -141,7 +166,8 @@ export const StepThreePublication = () => {
             />
             <SelectField
               formik={formik}
-              name={"sex"}
+              name={"kidsOption"}
+              disabled={formik.values.kids === 0}
               options={optionsKids}
               width={"24rem"}
               placeholder={"terminos la edad de los niños"}
@@ -156,7 +182,8 @@ export const StepThreePublication = () => {
             />
             <SelectField
               formik={formik}
-              name={"sex"}
+              name={"pestType"}
+              disabled={formik.values.pets === 0}
               options={optionsPets}
               width={"24rem"}
               placeholder={"Tipo de mascotas "}

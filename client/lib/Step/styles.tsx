@@ -66,3 +66,11 @@ export const Button = styled.button`
     cursor: not-allowed;
   }
 `;
+
+export const SpinnerContainer = styled.div`
+  display: flex;
+  width: 90%;
+  height: 70%;
+  justify-content: center;
+  align-items: center;
+`;

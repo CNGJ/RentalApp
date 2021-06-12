@@ -30,8 +30,7 @@ export const Button = styled.button`
     background: ${theme.Orange};
   }
 
-  :disabled {
-  border: 1px solid #999999;
+  :disabled {  
   background-color: ${theme.Orange_Opacity};
   color: ${theme.Gray};
   cursor: not-allowed;
