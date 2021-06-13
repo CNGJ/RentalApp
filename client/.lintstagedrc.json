@@ -1,3 +1,6 @@
 {
-  "**/*.+(js|jsx|css|less|scss|ts|tsx|md)": ["npm run lint:js"]
+  "**/*.+(js|jsx|css|less|scss|ts|tsx|md)": [
+    "eslint --fix",
+    "git add"
+  ]
 }
