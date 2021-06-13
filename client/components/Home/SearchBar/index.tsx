@@ -1,27 +1,23 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useRouter } from 'next/router';
 import {
-  WrapperSearchBox, InputBox, Button, OverlayBox, a,
+  WrapperSearchBox, InputBox, Button,
 } from './styles';
 import AutoComplete from '../../../lib/AutoComplete';
 import { DatePickerRange } from '../../../lib/DatePickerRange';
 import { InputGuests } from '../../../lib/Guestinput';
 
-const SearchBox = () => {
+const SearchBox = (): void => {
   const [destino, setdestino] = useState(null);
   const [date, setDate] = useState({ from: undefined, to: undefined });
   const [guest, setguest] = useState({ adults: 0, kids: 0, pets: 0 });
 
-  const router = useRouter(), ;
+  const router = useRouter();
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log('destino', destino);
-    console.log('date', date);
-    console.log('guest', guest);
-
     router.push(`/search/${destino}`);
   };
 

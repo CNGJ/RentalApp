@@ -1,5 +1,5 @@
 {
   "hooks": {
-   "pre-commit": "eslint --cache --fix"
+   "pre-commit": "npx eslint --cache --fix"
    }
 }
