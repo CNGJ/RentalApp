@@ -9,6 +9,7 @@ import AutoComplete from '../../../lib/AutoComplete';
 import { DatePickerRange } from '../../../lib/DatePickerRange';
 import { InputGuests } from '../../../lib/Guestinput';
 
+sdf;
 const SearchBox = () => {
   const [destino, setdestino] = useState(null);
   const [date, setDate] = useState({ from: undefined, to: undefined });
