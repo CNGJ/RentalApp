@@ -3,7 +3,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useRouter } from 'next/router';
 import {
-  WrapperSearchBox, InputBox, Button, OverlayBox,
+  WrapperSearchBox, InputBox, Button,
 } from './styles';
 import AutoComplete from '../../../lib/AutoComplete';
 import { DatePickerRange } from '../../../lib/DatePickerRange';
