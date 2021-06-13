@@ -1,11 +1,13 @@
-import React, { useState, useRef } from "react";
-import { WrapperSearchBox, InputBox, Button, OverlayBox } from "./styles";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import AutoComplete from "../../../lib/AutoComplete";
-import { DatePickerRange } from "../../../lib/DatePickerRange";
-import { InputGuests } from "../../../lib/Guestinput";
-import { useRouter } from "next/router";
+import React, { useState, useRef } from 'react';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useRouter } from 'next/router';
+import {
+  WrapperSearchBox, InputBox, Button, OverlayBox,
+} from './styles';
+import AutoComplete from '../../../lib/AutoComplete';
+import { DatePickerRange } from '../../../lib/DatePickerRange';
+import { InputGuests } from '../../../lib/Guestinput';
 
 const SearchBox = () => {
   const [destino, setdestino] = useState(null);
@@ -16,9 +18,9 @@ const SearchBox = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log("destino", destino);
-    console.log("date", date);
-    console.log("guest", guest);
+    console.log('destino', destino);
+    console.log('date', date);
+    console.log('guest', guest);
 
     router.push(`/search/${destino}`);
   };
@@ -27,10 +29,10 @@ const SearchBox = () => {
     <WrapperSearchBox onSubmit={handleSearch}>
       <InputBox>
         <AutoComplete
-          name={"Destino"}
+          name="Destino"
           message={null}
-          width={"150"}
-          placeholder={"Destino"}
+          width="150"
+          placeholder="Destino"
           disabled={false}
           setValue={setdestino}
           onChange={(e) => {

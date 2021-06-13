@@ -45,8 +45,30 @@
     "yup": "^0.32.9"
   },
   "devDependencies": {
-    "@types/react": "^17.0.6",
-    "babel-plugin-styled-components": "^1.12.0",
+    "@types/react": "17.0.6",
+    "@typescript-eslint/eslint-plugin": "4.26.1",
+    "@typescript-eslint/parser": "4.26.1",
+    "babel-plugin-styled-components": "1.12.0",
+    "eslint": "7.28.0",
+    "eslint-config-airbnb": "18.2.1",
+    "eslint-import-resolver-typescript": "2.4.0",
+    "eslint-plugin-import": "2.23.4",
+    "eslint-plugin-jsx-a11y": "6.4.1",
+    "eslint-plugin-react": "7.24.0",
+    "eslint-plugin-react-hooks": "4.2.0",
+    "husky": "6.0.0",
+    "lint-staged": "11.0.0",
     "typescript": "^4.2.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.+(js|jsx|css|less|scss|ts|tsx|md)": [
+      "eslint --fix",
+      "git add"
+    ]
   }
 }
