@@ -1,34 +1,35 @@
-import React, { useContext, FC, useEffect } from "react";
-import { User, Group } from "../../../Icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Icon, WrapperHeader, WrapperIcons } from "./styles";
-import { theme } from "../../../theme";
-import { useRouter } from "next/router";
+import React, { useContext, FC, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useRouter } from 'next/router';
 import {
   faUser,
   faUserAstronaut,
   faPowerOff,
   faFolderPlus,
-} from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
-import { ModalContext } from "../../../Context/ModalContext";
-import { ProfileContext } from "../../../Context/ProfileContext";
-import { Login } from "../../UserSession/Login";
-import { Logout } from "../../UserSession/Logout";
-import SearchBar from "../SearchBar";
+} from '@fortawesome/free-solid-svg-icons';
+import Link from 'next/link';
+import { theme } from '../../../theme';
+import { Icon, WrapperHeader, WrapperIcons } from './styles';
+import { User, Group } from '../../../Icons';
+import { ModalContext } from '../../../Context/ModalContext';
+import { ProfileContext } from '../../../Context/ProfileContext';
+import { Login } from '../../UserSession/Login';
+import { Logout } from '../../UserSession/Logout';
+import SearchBar from '../SearchBar';
 
 interface IHeaderProps {
   fixed?: boolean;
 }
 
 const Header: FC<IHeaderProps> = ({ fixed }) => {
-  const { setShowModal, showModal, setInfoModal, ToastInfo } =
-    useContext(ModalContext);
+  const {
+    setShowModal, showModal, setInfoModal, ToastInfo,
+  } = useContext(ModalContext);
   const { profile, refetch } = useContext(ProfileContext);
   const router = useRouter();
 
   useEffect(() => {
-    console.log("render");
+    console.log('render');
   }, [profile]);
 
   const handleProfile = () => {
@@ -38,19 +39,19 @@ const Header: FC<IHeaderProps> = ({ fixed }) => {
     });
   };
   const handleNewPublication = () => {
-    router.push("/newPublication");
+    router.push('/newPublication');
   };
 
   const logOut = () => {
     setShowModal(!showModal);
     setInfoModal({
       children: <Logout />,
-      title: "Cerrar sesión",
+      title: 'Cerrar sesión',
     });
   };
 
   const goHome = () => {
-    router.push("/");
+    router.push('/');
   };
 
   return (
@@ -59,7 +60,7 @@ const Header: FC<IHeaderProps> = ({ fixed }) => {
         <FontAwesomeIcon
           onClick={goHome}
           icon={faUserAstronaut}
-          style={{ color: `${theme.Primary}`, cursor: "pointer" }}
+          style={{ color: `${theme.Primary}`, cursor: 'pointer' }}
         />
         <SearchBar />
 
