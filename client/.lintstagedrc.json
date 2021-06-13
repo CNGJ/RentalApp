@@ -1,6 +1,5 @@
 {
-  "**/*.+(js|jsx|css|less|scss|ts|tsx|md)": [
-    "eslint --fix",
-    "git add"
+  "**/*.+(js|jsx|scss|ts|tsx)": [
+    "eslint --fix"
   ]
 }
