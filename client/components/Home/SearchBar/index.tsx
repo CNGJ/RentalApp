@@ -15,7 +15,7 @@ const SearchBox = () => {
   const [guest, setguest] = useState({ adults: 0, kids: 0, pets: 0 });
 
   const router = useRouter();
-
+  dsf;
   const handleSearch = (e) => {
     e.preventDefault();
     console.log('destino', destino);
