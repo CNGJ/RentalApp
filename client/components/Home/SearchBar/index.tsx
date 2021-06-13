@@ -13,7 +13,7 @@ const SearchBox = () => {
   const [destino, setdestino] = useState(null);
   const [date, setDate] = useState({ from: undefined, to: undefined });
   const [guest, setguest] = useState({ adults: 0, kids: 0, pets: 0 });
-
+  sdf;
   const router = useRouter();
 
   const handleSearch = (e) => {
