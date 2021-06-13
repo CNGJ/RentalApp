@@ -3,7 +3,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useRouter } from 'next/router';
 import {
-  WrapperSearchBox, InputBox, Button, OverlayBox,
+  WrapperSearchBox, InputBox, Button, OverlayBox, a,
 } from './styles';
 import AutoComplete from '../../../lib/AutoComplete';
 import { DatePickerRange } from '../../../lib/DatePickerRange';
@@ -14,7 +14,7 @@ const SearchBox = () => {
   const [date, setDate] = useState({ from: undefined, to: undefined });
   const [guest, setguest] = useState({ adults: 0, kids: 0, pets: 0 });
 
-  const router = useRouter(),;
+  const router = useRouter(), ;
 
   const handleSearch = (e) => {
     e.preventDefault();
