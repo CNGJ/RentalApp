@@ -14,7 +14,7 @@ interface StepProps extends StepWizardChildProps {
   paramSubmit?: any;
 }
 
-const Step: FC<StepProps> = props => {
+const Step: FC<any> = props => {
   const { steps } = useContext(PublicationContext);
   const [loading, setLoading] = useState(false);
   const { currentStep, firstStep, goToStep, lastStep, nextStep, previousStep, totalSteps, paramSubmit, onSubmit } =

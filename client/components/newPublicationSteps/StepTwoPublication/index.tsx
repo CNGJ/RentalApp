@@ -2,10 +2,10 @@ import { useFormik } from 'formik';
 // import { v4 as uuidv4 } from 'uuid';
 import React, { useEffect, useContext } from 'react';
 import { DataContainer, Title, WrapperCounters, WrapperFeatures } from './styles';
-import { ValidationsData } from './validations';
+import ValidationsData from './validations';
 import { PublicationContext } from '../../../Context/PublicationContext';
-import { SelectField } from '../../../lib/Select';
-import { Counter } from '../../../lib/Counter';
+import SelectField from '../../../lib/Select';
+import Counter from '../../../lib/Counter';
 
 function validateStep(formik, steps: any, setvalidSteps: (a: any) => void) {
   if (formik.values.services.length > 0) {

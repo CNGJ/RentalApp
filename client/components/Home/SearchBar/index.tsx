@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useRouter } from 'next/router';
 import { WrapperSearchBox, InputBox, Button } from './styles';
 import AutoComplete from '../../../lib/AutoComplete';
-import { DatePickerRange } from '../../../lib/DatePickerRange';
-import { InputGuests } from '../../../lib/Guestinput';
+import DatePickerRange from '../../../lib/DatePickerRange';
+import InputGuests from '../../../lib/Guestinput';
 
 const SearchBox = (): any => {
   const [destino, setdestino] = useState(null);

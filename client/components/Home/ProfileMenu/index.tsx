@@ -1,5 +1,5 @@
 import React from 'react';
-import { FloatMenu } from '../../../lib/FloatMenu/index';
+import FloatMenu from '../../../lib/FloatMenu/index';
 import { ProfileMenuItem, ProfileMenuSeparator } from './styles';
 
 const ProfileMenu = () => {

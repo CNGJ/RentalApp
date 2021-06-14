@@ -1,6 +1,6 @@
 import React, { createContext, FC, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
-import { Modal } from '../lib/Modal';
+import Modal from '../lib/Modal';
 import 'react-toastify/dist/ReactToastify.css';
 
 export interface InfoModal {
