@@ -40,4 +40,4 @@ export const NEW_PUBLICATION = gql`
   }
 `;
 
-export const NEW_PEPE = gql``;
+export const NEW_PEPE = '';

@@ -31,7 +31,7 @@ const Step: FC<any> = props => {
           nextStep();
         }, 1000);
       } catch (error) {
-        console.log('jeje');
+        console.log('error', error);
       }
     } else {
       nextStep();

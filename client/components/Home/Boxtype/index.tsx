@@ -18,13 +18,13 @@ const Boxtype = () => {
     <WrapperBoxType>
       <ContainerTypes>
         {options.map((option, i) => (
-          <Icon key={uuidv4()} isLast={options.length === i + 1}>
-            <Link>
-              <SpanIcon>
-                <FontAwesomeIcon icon={option.icon} style={{ color: `${theme.White}` }} />
-              </SpanIcon>
-              {option.label}
-            </Link>
+          <Icon key={uuidv4()} isLast={i % 2 === 0}>
+            <FontAwesomeIcon
+              icon={option.icon}
+              style={{ color: `${i % 2 === 0 ? theme.White : theme.Gray_font}` }}
+              size="lg"
+            />
+            <Link>{option.label}</Link>
           </Icon>
         ))}
       </ContainerTypes>
