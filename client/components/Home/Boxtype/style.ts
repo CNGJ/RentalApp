@@ -7,18 +7,26 @@ export const WrapperBoxType = styled.div`
 `;
 
 export const ContainerTypes = styled.div`
-  border: 1px solid ${theme.Secondary};
   border-radius: 0.2rem;
   display: flex;
   align-items: center;
-  background: #fff;
   box-shadow: 0 8px 6px -6px black;
 `;
 
 export const Icon = styled.div<{ isLast: boolean }>`
-  padding: 1.2rem;
+  padding: 0.5rem;
   cursor: pointer;
-  color: black;
+  color: ${({ isLast }) => (isLast ? theme.White : theme.Gray_font)};
+  background-color: ${({ isLast }) => (isLast ? theme.Gray_font : theme.White)};
+  margin: 0.5rem;
+  width: 7rem;
+  box-shadow: 0 8px 6px -6px black;
+  display: flex;
+  border-radius: 0.5rem;
+  flex-direction: column;
+  align-items: center;
+  height: 6rem;
+  justify-content: center;
   // ${props => !props.isLast && 'border-right: 0.5px solid black'};
 
   :hover {
@@ -30,12 +38,13 @@ export const Icon = styled.div<{ isLast: boolean }>`
 
 export const Link = styled.div<{ placeholder: string }>`
   font-size: 1rem;
+  margin-top: 1rem;
   line-height: 1.5;
   margin-left: 5px;
-  font-weight: 400;
+  font-weight: 450;
 `;
 
-export const SpanIcon = styled.span`
+export const SpanIcon = styled.div`
   padding: 0.7rem;
   margin-right: 1rem;
   // border: 1px solid ${theme.Blue2};

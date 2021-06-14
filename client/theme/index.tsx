@@ -10,7 +10,8 @@ const theme = {
   Orange: '	#F96B45',
   Orange_Opacity: '#ff6347cc',
   Gray: '#666',
-  Gray_Opcity: '#f2f2f2'
+  Gray_Opcity: '#f2f2f2',
+  Gray_font: '#595754'
 };
 
 export default theme;
