@@ -1,61 +1,51 @@
-import React, {
-  FC,
-  InputHTMLAttributes,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import StyledInput, {
-  InputContainer,
-  FieldMessageWrapper,
-  AutoContainer,
-  Option,
-} from "./styles";
+import React, { FC, InputHTMLAttributes, useEffect, useRef, useState } from 'react';
+import StyledInput, { InputContainer, FieldMessageWrapper, AutoContainer, Option } from './styles';
+
 interface IFieldMessage {
   text: string;
-  type?: "help" | "error";
+  type?: 'help' | 'error';
 }
 
-const FieldMessage: FC<IFieldMessage> = ({ text, type = "help" }) => (
+const FieldMessage: FC<IFieldMessage> = ({ text, type = 'help' }) => (
   <FieldMessageWrapper type={type}>{text}</FieldMessageWrapper>
 );
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   message?: IFieldMessage;
-  "data-testid"?: string;
+  'data-testid'?: string;
   setValue: any;
 }
-const AutoComplete: FC<InputProps> = (props) => {
+const AutoComplete: FC<InputProps> = props => {
   const [hasValue, setHasValue] = useState(false);
   const [displayOptions, setdisplayOptions] = useState(false);
   const ref = useRef(null);
   const [cities, setCities] = useState([
-    { name: "Buenos Aires" },
-    { name: "Mendoza" },
-    { name: "Bariloche" },
-    { name: "Cordoba" },
-    { name: "La Plata" },
-    { name: "La Pampa" },
+    { name: 'Buenos Aires' },
+    { name: 'Mendoza' },
+    { name: 'Bariloche' },
+    { name: 'Cordoba' },
+    { name: 'La Plata' },
+    { name: 'La Pampa' }
   ]);
   const [options, setoptions] = useState(null);
   useEffect(() => {
     setHasValue(!!props?.value);
   }, [props.value]);
 
-  useEffect(() => {
-    window.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      window.removeEventListener("mousedown", handleClickOutside);
-    };
-  });
-
-  const handleClickOutside = (event) => {
+  const handleClickOutside = event => {
     const { current: wrap } = ref;
     if (wrap && !wrap.contains(event.target)) {
       setdisplayOptions(false);
     }
   };
+
+  useEffect(() => {
+    window.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      window.removeEventListener('mousedown', handleClickOutside);
+    };
+  });
 
   const handleEntry = (ev, click = false) => {
     if (click) {
@@ -65,9 +55,7 @@ const AutoComplete: FC<InputProps> = (props) => {
     } else {
       props.onChange(ev);
       setHasValue(!!ev.target.value);
-      const optionsFilter = cities.filter((x) =>
-        x.name.toLowerCase().includes(ev.target.value.toLowerCase())
-      );
+      const optionsFilter = cities.filter(x => x.name.toLowerCase().includes(ev.target.value.toLowerCase()));
       setoptions(optionsFilter);
       if (optionsFilter.length > 0) {
         setdisplayOptions(true);
@@ -85,19 +73,15 @@ const AutoComplete: FC<InputProps> = (props) => {
     >
       <StyledInput
         {...props}
-        onChange={(ev) => handleEntry(ev)}
+        onChange={ev => handleEntry(ev)}
         hasValue={hasValue}
         autoComplete="off"
-        placeholder={hasValue ? props.placeholder : ""}
+        placeholder={hasValue ? props.placeholder : ''}
       />
       {displayOptions && (
         <AutoContainer>
           {options.map((v, i) => (
-            <Option
-              tabIndex="0"
-              onClick={() => handleEntry(v.name, true)}
-              key={i}
-            >
+            <Option tabIndex="0" onClick={() => handleEntry(v.name, true)} key={i}>
               <span>{v.name}</span>
             </Option>
           ))}

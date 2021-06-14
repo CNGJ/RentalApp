@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { theme } from "../../theme";
+import styled from 'styled-components';
+import theme from '../../theme';
 
 export const WrapperRadioo = styled.div`
   margin: 10px 0;
@@ -22,7 +22,7 @@ export const RadioOuter = styled.div`
   margin-right: 12px;
   transition: all 0.1s linear;
 
-  ${({ selected }) => selected && "border: 2px solid #666;"}
+  ${({ selected }) => selected && 'border: 2px solid #666;'}
 `;
 
 export const RadioInner = styled.div`
@@ -32,11 +32,10 @@ export const RadioInner = styled.div`
   background-color: ${theme.Terciary};
   transition: all 0.1s linear;
 
-  ${({ selected }) => selected && " width: 0;height: 0;"}
+  ${({ selected }) => selected && ' width: 0;height: 0;'}
 `;
 
 export const Label = styled.div`
   color: #666;
   padding-right: 8px;
 `;
-

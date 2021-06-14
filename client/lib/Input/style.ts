@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { theme } from "../../theme";
+import styled from 'styled-components';
+import theme from '../../theme';
 
 export default styled.input`
   width: 100%;
@@ -36,17 +36,17 @@ export const InputContainer = styled.div<{
   width;
   marginB;
 }>`
-  background-color: ${({ disabled }) => (disabled ? "#dadada" : "#ffffff")};
-  pointer-events: ${({ disabled }) => (disabled ? "none" : "")};
+  background-color: ${({ disabled }) => (disabled ? '#dadada' : '#ffffff')};
+  pointer-events: ${({ disabled }) => (disabled ? 'none' : '')};
   max-width: 100%;
-  width: ${({ width }) => (width ? `${width}px` : "100%")};
+  width: ${({ width }) => (width ? `${width}px` : '100%')};
   position: relative;
   border-radius: 4px 4px 0 0;
-  margin-bottom: ${({ marginB }) => (marginB ? `${marginB}px` : "1.4rem")};
+  margin-bottom: ${({ marginB }) => (marginB ? `${marginB}px` : '1.4rem')};
   box-shadow: rgb(0 0 0 / 20%) 0px 2px 5px;
   &::before {
     position: absolute;
-    content: " ";
+    content: ' ';
     height: 1px;
     width: 100%;
     background: ${theme.Terciary};
@@ -62,21 +62,19 @@ export const InputContainer = styled.div<{
     transform: scaleX(1);
   }
   &::after {
-    content: "${({ placeholder }) => placeholder}";
+    content: '${({ placeholder }) => placeholder}';
     position: absolute;
     left: 49px;
     top: 13px;
 
-    color: ${({ hasValue }) =>
-      hasValue ? "rgb(143, 143, 143);" : theme.Primary};
+    color: ${({ hasValue }) => (hasValue ? 'rgb(143, 143, 143);' : theme.Primary)};
 
     font-size: 16px;
     font-weight: 450;
     color: #666;
     letter-spacing: 0px;
     transition: transform 150ms ease-in-out;
-    transform: ${({ hasValue }) =>
-      hasValue ? "translate(-13%, -12px) scale(0.75);  " : ""};
+    transform: ${({ hasValue }) => (hasValue ? 'translate(-13%, -12px) scale(0.75);  ' : '')};
   }
   &:focus-within::after {
     transition: transform 150ms ease-in-out;
@@ -88,12 +86,11 @@ export const InputContainer = styled.div<{
     }
   }
   input {
-    padding: ${({ hasValue }) =>
-      hasValue ? "1.1875rem 1rem 0.4375rem 1rem" : "0.8125rem 1rem"};
+    padding: ${({ hasValue }) => (hasValue ? '1.1875rem 1rem 0.4375rem 1rem' : '0.8125rem 1rem')};
   }
 `;
 
-export const FieldMessageWrapper = styled("div")<{ type: "help" | "error" }>`
+export const FieldMessageWrapper = styled('div')<{ type: 'help' | 'error' }>`
   font-size: 14px;
   font-stretch: normal;
   font-style: normal;
@@ -101,7 +98,7 @@ export const FieldMessageWrapper = styled("div")<{ type: "help" | "error" }>`
   line-height: 1.75;
   letter-spacing: 0.09px;
   border: 2px solid rgb(187, 186, 186);
-  color: ${({ type }) => (type === "error" ? "#ec0000" : "#444")};
+  color: ${({ type }) => (type === 'error' ? '#ec0000' : '#444')};
   background-color: inherit;
   font-weight: 200;
   border: 0;

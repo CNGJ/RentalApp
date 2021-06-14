@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { theme } from "../../../theme";
+import styled from 'styled-components';
+import theme from '../../../theme';
 
 export const WrapperHeader = styled.div<{ fixed: boolean }>`
   display: flex;
@@ -11,7 +11,7 @@ export const WrapperHeader = styled.div<{ fixed: boolean }>`
   border-bottom: solid 0.1px ${theme.Terciary};
   background: rgba(251, 247, 236, 0.2);
 
-  ${(props) =>
+  ${props =>
     props.fixed &&
     `position: fixed;
      top: 0;
@@ -34,7 +34,7 @@ export const Icon = styled.div`
   border-radius: 0.5rem;
   cursor: pointer;
   ::after {
-    content: "${({ tooltip }) => tooltip}";
+    content: '${({ tooltip }) => tooltip}';
     position: absolute;
     top: 80%;
     font-size: 13px;

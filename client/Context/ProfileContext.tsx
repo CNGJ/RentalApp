@@ -1,10 +1,6 @@
-import React, { createContext, FC, useEffect, useState } from "react";
-import {
-  useQuery,
-  OperationVariables,
-  ApolloQueryResult,
-} from "@apollo/client";
-import { GET_USER } from "../gql/Users";
+import React, { createContext, FC, useEffect, useState } from 'react';
+import { useQuery, OperationVariables, ApolloQueryResult } from '@apollo/client';
+import { GET_USER } from '../gql/Users';
 
 interface IProfile {
   id?: string;
@@ -17,15 +13,13 @@ interface IProfile {
 export interface ContextPropsProfile {
   profile?: IProfile;
   // setprofile: (a: any) => void;
-  refetch: (
-    variables?: Partial<OperationVariables>
-  ) => Promise<ApolloQueryResult<any>>;
+  refetch: (variables?: Partial<OperationVariables>) => Promise<ApolloQueryResult<any>>;
 }
 
 export const initialProps: ContextPropsProfile = {
   profile: null,
   // setprofile: null,
-  refetch: null,
+  refetch: null
 };
 
 const ProfileContext = createContext(initialProps);
@@ -33,10 +27,10 @@ const ProfileContext = createContext(initialProps);
 const ProfileProvider: FC = ({ children }) => {
   const [profile, setprofile] = useState(initialProps.profile);
 
-  const { data, error, loading, refetch  } = useQuery(GET_USER);
+  const { data, error, loading, refetch } = useQuery(GET_USER);
 
   useEffect(() => {
-    console.log(data, "data");
+    console.log(data, 'data');
 
     if (data) {
       if (data.getUser) {
@@ -55,7 +49,7 @@ const ProfileProvider: FC = ({ children }) => {
       value={{
         profile,
         // setprofile,
-        refetch,
+        refetch
       }}
     >
       {children}

@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useRouter } from 'next/router';
-import {
-  WrapperSearchBox, InputBox, Button,
-} from './styles';
+import { WrapperSearchBox, InputBox, Button } from './styles';
 import AutoComplete from '../../../lib/AutoComplete';
 import { DatePickerRange } from '../../../lib/DatePickerRange';
 import { InputGuests } from '../../../lib/Guestinput';
@@ -16,7 +14,7 @@ const SearchBox = (): any => {
 
   const router = useRouter();
 
-  const handleSearch = (e) => {
+  const handleSearch = e => {
     e.preventDefault();
     router.push(`/search/${destino}`);
   };
@@ -31,7 +29,7 @@ const SearchBox = (): any => {
           placeholder="Destino"
           disabled={false}
           setValue={setdestino}
-          onChange={(e) => {
+          onChange={e => {
             setdestino(e.target.value);
           }}
           value={destino}

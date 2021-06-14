@@ -1,21 +1,22 @@
-import React, { FC, InputHTMLAttributes, useEffect, useState } from "react";
-import StyledInput, { InputContainer, FieldMessageWrapper } from "./style";
+import React, { FC, InputHTMLAttributes, useEffect, useState } from 'react';
+import StyledInput, { InputContainer, FieldMessageWrapper } from './style';
+
 interface IFieldMessage {
   text: string;
-  type?: "help" | "error";
+  type?: 'help' | 'error';
 }
 
-const FieldMessage: FC<IFieldMessage> = ({ text, type = "help" }) => (
+const FieldMessage: FC<IFieldMessage> = ({ text, type = 'help' }) => (
   <FieldMessageWrapper type={type}>{text}</FieldMessageWrapper>
 );
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   message?: IFieldMessage;
-  "data-testid"?: string;
+  'data-testid'?: string;
   marginB?: string;
 }
-const Input: FC<InputProps> = (props) => {
+const Input: FC<InputProps> = props => {
   const [hasValue, setHasValue] = useState(false);
   useEffect(() => {
     setHasValue(!!props?.value);
@@ -30,12 +31,12 @@ const Input: FC<InputProps> = (props) => {
     >
       <StyledInput
         {...props}
-        onChange={(ev) => {
+        onChange={ev => {
           props.onChange(ev);
           setHasValue(!!ev.target.value);
         }}
         hasValue={hasValue}
-        placeholder={hasValue ? props.placeholder : ""}
+        placeholder={hasValue ? props.placeholder : ''}
       />
       {props.message && <FieldMessage {...props.message} />}
     </InputContainer>

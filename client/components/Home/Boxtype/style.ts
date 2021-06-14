@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { theme } from "../../../theme";
+import styled from 'styled-components';
+import theme from '../../../theme';
 
 export const WrapperBoxType = styled.div`
   display: flex;
@@ -19,7 +19,7 @@ export const Icon = styled.div<{ isLast: boolean }>`
   padding: 1.2rem;
   cursor: pointer;
   color: black;
-  // ${(props) => !props.isLast && "border-right: 0.5px solid black"};
+  // ${props => !props.isLast && 'border-right: 0.5px solid black'};
 
   :hover {
     color: ${theme.Terciary};

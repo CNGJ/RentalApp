@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { theme } from "../../../theme";
+import styled from 'styled-components';
+import theme from '../../../theme';
 
 export const WrapperCard = styled.div`
   padding: 0.1rem;
@@ -115,7 +115,7 @@ export const WrapIconSpan = styled.div<{ tooltip: string }>`
   padding: 0.2rem;
   position: relative;
   &:hover::after {
-    content: "${({ tooltip }) => tooltip}";
+    content: '${({ tooltip }) => tooltip}';
     position: absolute;
     top: 100%;
     font-size: 12px;

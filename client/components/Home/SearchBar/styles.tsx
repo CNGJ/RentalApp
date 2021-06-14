@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { theme } from "../../../theme";
+import styled from 'styled-components';
+import theme from '../../../theme';
 
 export const WrapperSearchBox = styled.form`
   display:flex;  
@@ -30,11 +30,11 @@ export const Button = styled.button`
     background: ${theme.Orange};
   }
 
-  :disabled {  
-  background-color: ${theme.Orange_Opacity};
-  color: ${theme.Gray};
-  cursor: not-allowed;
-}
+  :disabled {
+    background-color: ${theme.Orange_Opacity};
+    color: ${theme.Gray};
+    cursor: not-allowed;
+  }
 `;
 
 export const OverlayBox = styled.div<{ content: JSX.Element }>`

@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { theme } from "../../theme";
+import styled from 'styled-components';
+import theme from '../../theme';
 
 export const WrapperStep = styled.div`
   display: flex;
@@ -38,7 +38,7 @@ export const ContainerButtonOut = styled.div`
   display: flex;
   margin-top: 1rem;
   width: 50%;
-  justify-content: ${({ first }) => (first ? "flex-end" : "space-between")};
+  justify-content: ${({ first }) => (first ? 'flex-end' : 'space-between')};
 
   @media (max-width: 1600px) {
     width: 60%;

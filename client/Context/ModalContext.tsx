@@ -1,7 +1,7 @@
-import React, { createContext, FC, useState } from "react";
-import { Modal } from "../lib/Modal";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import React, { createContext, FC, useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import { Modal } from '../lib/Modal';
+import 'react-toastify/dist/ReactToastify.css';
 
 export interface InfoModal {
   children?: JSX.Element;
@@ -36,7 +36,7 @@ export const initialProps: ContextPropsModal = {
   setInfoModal: null,
   ToastError: null,
   ToastSuccess: null,
-  ToastInfo: null,
+  ToastInfo: null
 };
 
 const ModalContext = createContext(initialProps);
@@ -47,17 +47,17 @@ const ModalProvider: FC = ({ children }) => {
   // const [children, setchildren] = useState<JSX.Element>(null)
   const ToastError = (msg: string) =>
     toast.error(msg, {
-      position: toast.POSITION.BOTTOM_RIGHT,
+      position: toast.POSITION.BOTTOM_RIGHT
     });
 
   const ToastSuccess = (msg: string) =>
     toast.success(msg, {
-      position: toast.POSITION.BOTTOM_RIGHT,
+      position: toast.POSITION.BOTTOM_RIGHT
     });
 
   const ToastInfo = (msg: string) =>
     toast.info(msg, {
-      position: toast.POSITION.BOTTOM_RIGHT,
+      position: toast.POSITION.BOTTOM_RIGHT
     });
 
   return (
@@ -69,7 +69,7 @@ const ModalProvider: FC = ({ children }) => {
         setInfoModal,
         ToastError,
         ToastSuccess,
-        ToastInfo,
+        ToastInfo
       }}
     >
       {children}
@@ -82,7 +82,7 @@ const ModalProvider: FC = ({ children }) => {
         // open={showModal}
         // {...infoModal}
       >
-        {infoModal?.children || ""}
+        {infoModal?.children || ''}
       </Modal>
       <ToastContainer />
     </ModalContext.Provider>

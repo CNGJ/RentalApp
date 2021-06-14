@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { theme } from "../../../theme";
+import styled from 'styled-components';
+import theme from '../../../theme';
 
 export const Subtitle = styled.p`
   font-size: 18px;
@@ -9,10 +9,7 @@ export const Subtitle = styled.p`
   cursor: pointer;
 `;
 
-export const Title = styled.p`
-  
-
-`;
+export const Title = styled.p``;
 
 export const FormWrapper = styled.form`
   padding: 2rem;

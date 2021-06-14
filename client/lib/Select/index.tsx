@@ -1,11 +1,7 @@
-import React, { FC } from "react";
-import Select, { Option, ReactSelectProps } from "react-select";
-import { theme } from "../../theme";
-import {
-  customStylesSelect,
-  WrapperSelect,
-  customStylesSelectMulti,
-} from "./styles";
+import React, { FC } from 'react';
+import Select, { Option, ReactSelectProps } from 'react-select';
+import theme from '../../theme';
+import { customStylesSelect, WrapperSelect, customStylesSelectMulti } from './styles';
 
 interface ISelectProps {
   options: any[];
@@ -16,16 +12,7 @@ interface ISelectProps {
   width?: string;
   disabled?: boolean;
 }
-
-export const SelectField: FC<ISelectProps> = ({
-  options,
-  formik,
-  placeholder,
-  name,
-  isMulti,
-  width,
-  disabled,
-}) => (
+const SelectField: FC<ISelectProps> = ({ options, formik, placeholder, name, isMulti, width, disabled }) => (
   <WrapperSelect width={width}>
     <Select
       styles={!isMulti ? customStylesSelect : customStylesSelectMulti}
@@ -40,26 +27,25 @@ export const SelectField: FC<ISelectProps> = ({
         } else {
           formik.setValues({
             ...formik.values,
-            [name]: option,
+            [name]: option
           });
         }
       }}
       value={
-        !isMulti
-          ? options
-            ? options.find((option) => option.value === formik.values[name])
-            : ""
-          : formik.values[name]
+        // eslint-disable-next-line no-nested-ternary
+        !isMulti ? (options ? options.find(option => option.value === formik.values[name]) : '') : formik.values[name]
       }
-      theme={(themeOrigin) => ({
+      theme={themeOrigin => ({
         ...themeOrigin,
         borderRadius: 0,
         colors: {
           ...themeOrigin.colors,
           primary25: `${theme.Ligth}`,
-          primary: `${theme.Terciary}`,
-        },
+          primary: `${theme.Terciary}`
+        }
       })}
     />
   </WrapperSelect>
 );
+
+export default SelectField;

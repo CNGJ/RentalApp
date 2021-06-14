@@ -1,7 +1,7 @@
-import React from "react";
-import { CardSearch } from "../CardSearch";
-import { Filters } from "../FiltersSearch";
-import { WrapperResults, WrapperSearchView, WrapperMap } from "./styles";
+import React from 'react';
+import CardSearch from '../CardSearch';
+import Filters from '../FiltersSearch';
+import { WrapperResults, WrapperSearchView, WrapperMap } from './styles';
 
 const SearchView = () => {
   return (
@@ -17,7 +17,7 @@ const SearchView = () => {
           <CardSearch />
         </WrapperResults>
 
-        <WrapperMap imgUrl={"/mapa.png"} ></WrapperMap>
+        <WrapperMap imgUrl={'/mapa.png'}></WrapperMap>
       </WrapperSearchView>
     </>
   );

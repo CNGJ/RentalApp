@@ -1,12 +1,12 @@
-import React, { FC } from "react";
-import { WrapperCard, ImgCard, Title } from "./style";
+import React, { FC } from 'react';
+import { WrapperCard, ImgCard, Title } from './style';
 
 interface ICardImg {
   image: string;
   title: string;
 }
 
-export const CardImage: FC<ICardImg> = ({ image, title }) => {
+const CardImage: FC<ICardImg> = ({ image, title }) => {
   const src = `/${image}.jpg`;
   return (
     <>
@@ -17,3 +17,5 @@ export const CardImage: FC<ICardImg> = ({ image, title }) => {
     </>
   );
 };
+
+export default CardImage;
