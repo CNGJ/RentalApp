@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, FC } from "react";
+import { FloatMenu } from "../FloatMenu";
 import {
-  GuestContainer,
   WrapperInput,
   WrapperCounter,
   CounterButton,
@@ -110,33 +110,35 @@ export const InputGuests: FC<IGuetsProps> = ({ state, setstate }) => {
         <Title>Huespedes</Title>
 
         {display && (
-          <GuestContainer>
-            {Guests.map((v, i) => (
-              <WrapperCounter key={i}>
-                <CounterInfo>
-                  <TitleCounter>{v.name} </TitleCounter>
-                  <TitleCounter>{v.state}</TitleCounter>
-                </CounterInfo>
+          <FloatMenu>
+            <div>
+              {Guests.map((v, i) => (
+                <WrapperCounter key={i}>
+                  <CounterInfo>
+                    <TitleCounter>{v.name} </TitleCounter>
+                    <TitleCounter>{v.state}</TitleCounter>
+                  </CounterInfo>
 
-                <CounterButtons>
-                  <CounterButton
-                    type="button"
-                    disabled={v.disabled_sub}
-                    onClick={() => v.setState(v.key, "-")}
-                  >
-                    -
-                  </CounterButton>
-                  <CounterButton
-                    type="button"
-                    onClick={() => v.setState(v.key, "+")}
-                    plus
-                  >
-                    +
-                  </CounterButton>
-                </CounterButtons>
-              </WrapperCounter>
-            ))}
-          </GuestContainer>
+                  <CounterButtons>
+                    <CounterButton
+                      type="button"
+                      disabled={v.disabled_sub}
+                      onClick={() => v.setState(v.key, "-")}
+                    >
+                      -
+                    </CounterButton>
+                    <CounterButton
+                      type="button"
+                      onClick={() => v.setState(v.key, "+")}
+                      plus
+                    >
+                      +
+                    </CounterButton>
+                  </CounterButtons>
+                </WrapperCounter>
+              ))}
+            </div>
+          </FloatMenu>
         )}
       </WrapperInput>
     </>

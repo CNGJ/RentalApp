@@ -9,5 +9,6 @@ export const theme = {
   White: "#ffff",
   Orange: "	#F96B45",
   Orange_Opacity: "#ff6347cc",
-  Gray: "#666"
+  Gray: "#666",
+  Gray_Opcity: "#f2f2f2",
 };

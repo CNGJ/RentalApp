@@ -5,21 +5,6 @@ export const WrapperInput = styled.div`
   position: relative;
 `;
 
-export const GuestContainer = styled.div`
-  position: absolute;
-  border-width: 0px 1px 1px 1px;
-  border-style: solid;
-  border-color: white;
-  background-color: ${theme.White};
-  top: 50px;
-  padding: 0.5rem;
-  font-size: 1rem;
-  left: -25px;
-  border-radius: 0.5rem;
-  width: 15rem;
-  z-index: 2;
-`;
-
 export const WrapperCounter = styled.div`
   display: flex;
   justify-content: space-between;
