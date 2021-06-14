@@ -7,9 +7,9 @@ import theme from '../../../theme';
 import { Icon, WrapperHeader, WrapperIcons } from './styles';
 import { ModalContext } from '../../../Context/ModalContext';
 import { ProfileContext } from '../../../Context/ProfileContext';
-import { Logout } from '../../UserSession/Logout';
+import Logout from '../../UserSession/Logout';
 import SearchBar from '../SearchBar';
-import { ProfileMenu } from '../ProfileMenu/index';
+import ProfileMenu from '../ProfileMenu/index';
 
 interface IHeaderProps {
   fixed?: boolean;

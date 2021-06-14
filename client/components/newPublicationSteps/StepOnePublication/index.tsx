@@ -3,11 +3,11 @@ import React, { useEffect, useContext } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Input from '../../../lib/Input';
 import { DataContainer, WrapperInputs, Title, WrapperRadioButton } from './styles';
-import { ValidationsData } from './validations';
+import ValidationsData from './validations';
 // import Select, { Option } from 'react-select';
 // import theme from '../../../theme';
 import { PublicationContext } from '../../../Context/PublicationContext';
-import { SelectField } from '../../../lib/Select';
+import SelectField from '../../../lib/Select';
 import RadioButton from '../../../lib/RadioButton';
 
 const options = [
