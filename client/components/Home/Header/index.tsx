@@ -10,6 +10,7 @@ import { ProfileContext } from '../../../Context/ProfileContext';
 import Logout from '../../UserSession/Logout';
 import SearchBar from '../SearchBar';
 import ProfileMenu from '../ProfileMenu/index';
+import Login from '../../UserSession/Login';
 
 interface IHeaderProps {
   fixed?: boolean;
@@ -40,7 +41,15 @@ const Header: FC<IHeaderProps> = ({ fixed }) => {
   }, []);
 
   const handleProfile = () => {
-    setProfileMenu(!showProfileMenu);
+    if (profile) {
+      setProfileMenu(!showProfileMenu);
+    } else {
+      setShowModal(!showModal);
+      setInfoModal({
+        children: <Login />,
+        title: 'Inicia Sesion'
+      });
+    }
   };
   const handleNewPublication = () => {
     router.push('/newPublication');
