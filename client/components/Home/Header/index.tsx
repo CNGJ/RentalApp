@@ -25,18 +25,18 @@ const Header: FC<IHeaderProps> = ({ fixed }) => {
   const { profile } = useContext(ProfileContext);
   const router = useRouter();
   const [showProfileMenu, setProfileMenu] = useState(false);
-  // const ref = useRef(null);
+  const ref = useRef(null);
 
   useEffect(() => {
     console.log("render");
   }, [profile]);
 
-  // useEffect(() => {
-  //   window.addEventListener("mousedown", handleClickOutside);
-  //   return () => {
-  //     window.removeEventListener("mousedown", handleClickOutside);
-  //   };
-  // });
+  useEffect(() => {
+    window.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      window.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const handleProfile = () => {
     setProfileMenu(!showProfileMenu);
@@ -57,12 +57,12 @@ const Header: FC<IHeaderProps> = ({ fixed }) => {
     router.push("/");
   };
 
-  // const handleClickOutside = (event) => {
-  //   const { current: wrap } = ref;
-  //   if (wrap && !wrap.contains(event.target)) {
-  //     setProfileMenu(false);
-  //   }
-  // };
+  const handleClickOutside = (event) => {
+    const { current: wrap } = ref;
+    if (wrap && !wrap.contains(event.target)) {
+      setProfileMenu(false);
+    }
+  };
 
   return (
     <>
@@ -74,7 +74,7 @@ const Header: FC<IHeaderProps> = ({ fixed }) => {
         />
         <SearchBar />
 
-        <WrapperIcons>
+        <WrapperIcons ref={ref}>
           <Icon onClick={handleProfile} tooltip={profile ? profile.name : null}>
             <FontAwesomeIcon
               icon={faUser}
