@@ -1,6 +1,6 @@
-import React from "react";
-import Header from "../../components/Home/Header";
-import SearchView from "../../components/Search/SearchView";
+import React from 'react';
+import Header from '../../components/Home/Header';
+import SearchView from '../../components/Search/SearchView';
 
 const Search = () => {
   return (

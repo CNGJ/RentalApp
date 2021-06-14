@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { theme } from "../../../theme";
+import styled from 'styled-components';
+import theme from '../../../theme';
 
 export const WrapperFilters = styled.div`
   margin-right: 0.5rem;
@@ -29,6 +29,7 @@ export const Filter = styled.div`
 export const FilterTitle = styled.p`
   margin: 0;
   ${({ small }) => {
-    small && "font-size: 10px;";
+    // eslint-disable-next-line no-unused-expressions
+    small && 'font-size: 10px;';
   }}
 `;

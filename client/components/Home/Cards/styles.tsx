@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { theme } from "../../../theme";
+import styled from 'styled-components';
+import theme from '../../../theme';
 
 export const WrapperCard = styled.div`
   width: 16rem;
@@ -73,7 +73,7 @@ export const CardPrice = styled.p`
 
 export const CardAmount = styled.p<{ small: boolean }>`
   color: #333;
-  font-size: ${({ small }) => (small ? "14" : "24")}px;
+  font-size: ${({ small }) => (small ? '14' : '24')}px;
   font-weight: 350;
   line-height: 1.25;
   color: ${theme.Primary};
@@ -84,14 +84,14 @@ export const CardAmount = styled.p<{ small: boolean }>`
 export const Chip = styled.div<{ color: string }>`
   display: inline-block;
   padding: 0.1rem;
-  margin-left: 0.5rem;  
+  margin-left: 0.5rem;
   font-weight: 300;
   font-size: 14px;
   background: ${({ color }) => {
     switch (color) {
-      case "1":
+      case '1':
         return theme.Primary;
-      case "2":
+      case '2':
         return theme.Orange;
       default:
         return theme.White;

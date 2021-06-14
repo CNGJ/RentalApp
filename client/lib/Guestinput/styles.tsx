@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { theme } from "../../theme";
+import styled from 'styled-components';
+import theme from '../../theme';
 
 export const WrapperInput = styled.div`
   position: relative;
@@ -18,7 +18,7 @@ export const Title = styled.p`
   cursor: pointer;
   ::before {
     position: absolute;
-    content: " ";
+    content: ' ';
     top: 30px;
     height: 2px;
     left: 0;

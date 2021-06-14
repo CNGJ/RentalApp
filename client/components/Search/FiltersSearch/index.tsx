@@ -1,5 +1,4 @@
-import React from "react";
-import { WrapperFilters, Filter, FilterTitle } from "./styles";
+import React from 'react';
 // import {
 //   faBed,
 //   faDoorClosed,
@@ -8,16 +7,11 @@ import { WrapperFilters, Filter, FilterTitle } from "./styles";
 //   faUsers,
 //   faBath,
 // } from "@fortawesome/free-solid-svg-icons";
-import {
-  faMoneyBillAlt,
-  faNewspaper,
-  faCalendar,
-  faSun,
-  faCircle,
-} from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMoneyBillAlt, faNewspaper, faCalendar, faSun, faCircle } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { WrapperFilters, Filter, FilterTitle } from './styles';
 
-export const Filters = () => {
+const Filters = () => {
   return (
     <>
       <WrapperFilters>
@@ -45,3 +39,5 @@ export const Filters = () => {
     </>
   );
 };
+
+export default Filters;

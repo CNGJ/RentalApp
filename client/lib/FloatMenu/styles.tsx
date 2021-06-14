@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { theme } from "../../theme";
+import styled from 'styled-components';
+import theme from '../../theme';
 
-export const FloatMenuContainer = styled.div`
+const FloatMenuContainer = styled.div`
   position: absolute;
   margin-top: 5px;
   border-width: 0px 1px 1px 1px;
@@ -16,3 +16,5 @@ export const FloatMenuContainer = styled.div`
   width: 15rem;
   z-index: 2;
 `;
+
+export default FloatMenuContainer;

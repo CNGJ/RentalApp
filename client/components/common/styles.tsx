@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { theme } from "../../theme";
+import styled from 'styled-components';
+import theme from '../../theme';
 
 export const HomeTitle = styled.h1`
   font-size: 2rem;
@@ -24,11 +24,11 @@ export const SpanTitle = styled.span`
 
 export const WrapperHome = styled.div<{ column: boolean }>`
   display: flex;
-  ${(props) =>
+  ${props =>
     props.column
       ? `flex-direction: column;
   align-items: center;`
-      : "justify-content: center;"};
+      : 'justify-content: center;'};
 `;
 
 export const TitleContainer = styled.div`
@@ -44,10 +44,10 @@ export const SubTitle = styled.p<{
   font-size: 1.2rem;
   line-height: 1.5;
   margin: 0;
-  opacity: ${(props) => (props.opacity ? "0.5" : "1")};
-  font-weight: ${(props) => (props.bold ? "450" : "300")};
+  opacity: ${props => (props.opacity ? '0.5' : '1')};
+  font-weight: ${props => (props.bold ? '450' : '300')};
   padding: 0;
-  color: ${(props) => (props.red ? theme.Red : theme.Primary)};
+  color: ${props => (props.red ? theme.Red : theme.Primary)};
 `;
 
 export const TitleIcon = styled.div`
@@ -62,7 +62,7 @@ export const WrapperType = styled.div`
   align-items: center;
   margin-top: 2rem;
   background-size: contain;
-  background: url(${(props) => props.imgUrl});
+  background: url(${props => props.imgUrl});
   // background: #FFD581;
   padding-bottom: 0rem;
   padding-top: 10rem;

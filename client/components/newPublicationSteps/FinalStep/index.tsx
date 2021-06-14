@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-export const FinalStepNewPublication = () => {
+const FinalStepNewPublication = () => {
   return (
     <>
       <h1> Tu publicacion ha sido creada con exito </h1>
@@ -13,3 +13,5 @@ export const FinalStepNewPublication = () => {
     </>
   );
 };
+
+export default FinalStepNewPublication;

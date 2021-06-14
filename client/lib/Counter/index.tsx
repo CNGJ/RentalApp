@@ -1,11 +1,6 @@
-import React, { FC } from "react";
-import {
-  WrapperCounter,
-  CounterInfo,
-  TitleCounter,
-  CounterButtons,
-  CounterButton,
-} from "./styles";
+/* eslint-disable no-unneeded-ternary */
+import React, { FC } from 'react';
+import { WrapperCounter, CounterInfo, TitleCounter, CounterButtons, CounterButton } from './styles';
 
 interface CounterProps {
   name: string;
@@ -15,13 +10,7 @@ interface CounterProps {
   disabled?: boolean;
 }
 
-export const Counter: FC<CounterProps> = ({
-  label,
-  value,
-  onChange,
-  name,
-  disabled,
-}) => {
+const Counter: FC<CounterProps> = ({ label, value, onChange, name, disabled }) => {
   return (
     <>
       <WrapperCounter>
@@ -38,11 +27,7 @@ export const Counter: FC<CounterProps> = ({
           >
             -
           </CounterButton>
-          <CounterButton
-            type="button"
-            onClick={() => onChange(name, value + 1)}
-            plus
-          >
+          <CounterButton type="button" onClick={() => onChange(name, value + 1)} plus>
             +
           </CounterButton>
         </CounterButtons>
@@ -50,3 +35,5 @@ export const Counter: FC<CounterProps> = ({
     </>
   );
 };
+
+export default Counter;

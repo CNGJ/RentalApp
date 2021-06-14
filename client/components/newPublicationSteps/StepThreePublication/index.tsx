@@ -1,4 +1,5 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext } from 'react';
+import { useFormik } from 'formik';
 import {
   DataContainer,
   Title,
@@ -6,98 +7,90 @@ import {
   WrapperFeatures,
   WrapperPrice,
   Price,
-  FinalPrice,
-} from "./styles";
-import { useFormik } from "formik";
-import { ValidationsData } from "./validations";
-import { PublicationContext } from "../../../Context/PublicationContext";
-import { SelectField } from "../../../lib/Select";
+  FinalPrice
+} from './styles';
+import ValidationsData from './validations';
+import { PublicationContext } from '../../../Context/PublicationContext';
+import SelectField from '../../../lib/Select';
 
-import { v4 as uuidv4 } from "uuid";
-import { Counter } from "../../../lib/Counter";
-import Input from "../../../lib/Input";
+import Counter from '../../../lib/Counter';
+import Input from '../../../lib/Input';
 
-export const StepThreePublication = () => {
-  const { setvalidSteps, steps, setnewPublication } =
-    useContext(PublicationContext);
+const StepThreePublication = () => {
+  const { setvalidSteps, steps, setnewPublication } = useContext(PublicationContext);
 
   const initialValues = {
     price: null,
     adults: 1,
-    sex: "Ambos",
+    sex: 'Ambos',
     kids: 0,
-    kidsOption: "",
+    kidsOption: '',
     pets: 0,
-    pestType: "",
+    pestType: ''
   };
 
-  //#region MOCK ZONE
+  // #region MOCK ZONE
   /** Esto tiene que venir del back */
 
   const optionsSex = [
-    { value: "Ambos", label: "Ambos " },
-    { value: "Hombre", label: "Hombre" },
-    { value: "Mujer", label: "Mujer" },
+    { value: 'Ambos', label: 'Ambos ' },
+    { value: 'Hombre', label: 'Hombre' },
+    { value: 'Mujer', label: 'Mujer' }
   ];
 
   const optionsKids = [
-    { value: "Ambos", label: "Ambos " },
-    { value: "Bebes", label: "Bebes" },
-    { value: "Niños", label: "Niños" },
+    { value: 'Ambos', label: 'Ambos ' },
+    { value: 'Bebes', label: 'Bebes' },
+    { value: 'Niños', label: 'Niños' }
   ];
 
   const optionsPets = [
-    { value: "Perros", label: "Perros" },
-    { value: "Gatos", label: "Gatos" },
-    { value: "Otros", label: "Otros" },
+    { value: 'Perros', label: 'Perros' },
+    { value: 'Gatos', label: 'Gatos' },
+    { value: 'Otros', label: 'Otros' }
   ];
 
   /** */
-  //#endregion
+  // #endregion
 
   const formik = useFormik({
     initialValues,
     validationSchema: ValidationsData,
-    onSubmit: async (values) => {
-      console.log("values", values);
-    },
+    onSubmit: async values => {
+      console.log('values', values);
+    }
   });
 
-  const formatter = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
+  const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD'
   });
 
   useEffect(() => {
-    const isValid =
-      Object.values(formik.errors).length === 0 &&
-      formik.values !== formik.initialValues;
+    const isValid = Object.values(formik.errors).length === 0 && formik.values !== formik.initialValues;
 
-    console.log("isValid", isValid);
-    console.log("2", Object.values(formik.errors).length);
-    console.log("3", formik.values);
+    console.log('isValid', isValid);
+    console.log('2', Object.values(formik.errors).length);
+    console.log('3', formik.values);
 
     if (isValid) {
       const pepe = [...steps];
       pepe[2].disabled = false;
       setvalidSteps(pepe);
-    } else {
-      if (!steps[2].disabled) {
-        const disabedSteps = [...steps];
-        disabedSteps[2].disabled = true;
-        setvalidSteps(disabedSteps);
-      }
+    } else if (!steps[2].disabled) {
+      const disabedSteps = [...steps];
+      disabedSteps[2].disabled = true;
+      setvalidSteps(disabedSteps);
     }
   }, [formik.errors]);
 
-  const { price, adults, sex, kids, kidsOption, pets, pestType } =
-    formik.values;
+  const { price, adults, sex, kids, kidsOption, pets, pestType } = formik.values;
 
   useEffect(() => {
-    setnewPublication((prev) => ({
+    setnewPublication(prev => ({
       ...prev,
       price,
-      terms: { adults, kids, pets, sex },
+      terms: { adults, kids, pets, sex }
     }));
   }, [formik.values]);
 
@@ -106,87 +99,67 @@ export const StepThreePublication = () => {
       <DataContainer onSubmit={formik.handleSubmit}>
         <WrapperPrice>
           <Input
-            name={"price"}
+            name={'price'}
             message={
               formik.errors.price && formik.touched.price
-                ? { text: formik.errors.price.toString(), type: "error" }
+                ? { text: formik.errors.price.toString(), type: 'error' }
                 : null
             }
-            width={"350"}
+            width={'350'}
             type="number"
-            marginB={"0"}
-            placeholder={"Precio por noche"}
+            marginB={'0'}
+            placeholder={'Precio por noche'}
             disabled={false}
             onChange={formik.handleChange}
             value={formik.values.price}
             onBlur={formik.handleBlur}
           />
           <div>
-            <Price>
-              {formik.values.price
-                ? formatter.format(formik.values.price)
-                : "0.00"}
-            </Price>
+            <Price>{formik.values.price ? formatter.format(formik.values.price) : '0.00'}</Price>
             {formik.values.price && (
-              <FinalPrice>
-                {`Precio final por noche:  ${formatter.format(
-                  formik.values.price * 1.08
-                )}`}
-              </FinalPrice>
+              <FinalPrice>{`Precio final por noche:  ${formatter.format(formik.values.price * 1.08)}`}</FinalPrice>
             )}
           </div>
         </WrapperPrice>
 
         <WrapperFeatures>
-          <Title>
-            Detalla los terminos para las personas que quieran alojarse
-          </Title>
+          <Title>Detalla los terminos para las personas que quieran alojarse</Title>
           <WrapperTerms>
             <Counter
-              label={"Adultos"}
-              name={"adults"}
+              label={'Adultos'}
+              name={'adults'}
               disabled={formik.values.adults - 1 === 0}
               value={formik.values.adults}
               onChange={formik.setFieldValue}
             />
             <SelectField
               formik={formik}
-              name={"sex"}
+              name={'sex'}
               options={optionsSex}
-              width={"24rem"}
-              placeholder={"terminos en el sexo de los huespedes"}
+              width={'24rem'}
+              placeholder={'terminos en el sexo de los huespedes'}
             />
           </WrapperTerms>
           <WrapperTerms>
-            <Counter
-              label={"Niños"}
-              name={"kids"}
-              value={formik.values.kids}
-              onChange={formik.setFieldValue}
-            />
+            <Counter label={'Niños'} name={'kids'} value={formik.values.kids} onChange={formik.setFieldValue} />
             <SelectField
               formik={formik}
-              name={"kidsOption"}
+              name={'kidsOption'}
               disabled={formik.values.kids === 0}
               options={optionsKids}
-              width={"24rem"}
-              placeholder={"terminos la edad de los niños"}
+              width={'24rem'}
+              placeholder={'terminos la edad de los niños'}
             />
           </WrapperTerms>
           <WrapperTerms>
-            <Counter
-              label={"Mascotas"}
-              name={"pets"}
-              value={formik.values.pets}
-              onChange={formik.setFieldValue}
-            />
+            <Counter label={'Mascotas'} name={'pets'} value={formik.values.pets} onChange={formik.setFieldValue} />
             <SelectField
               formik={formik}
-              name={"pestType"}
+              name={'pestType'}
               disabled={formik.values.pets === 0}
               options={optionsPets}
-              width={"24rem"}
-              placeholder={"Tipo de mascotas "}
+              width={'24rem'}
+              placeholder={'Tipo de mascotas '}
             />
           </WrapperTerms>
         </WrapperFeatures>
@@ -194,3 +167,5 @@ export const StepThreePublication = () => {
     </>
   );
 };
+
+export default StepThreePublication;

@@ -1,35 +1,36 @@
-import React, { useState, useRef, FC } from "react";
-import DayPickerInput from "react-day-picker/DayPickerInput";
-import Helmet from "react-helmet";
-import { DateUtils } from "react-day-picker";
-import dateFnsFormat from "date-fns/format";
-import dateFnsParse from "date-fns/parse";
-import moment from "moment";
-import { theme } from "../../theme";
+/* eslint-disable max-len */
+import React, { useState, useRef, FC } from 'react';
+import DayPickerInput from 'react-day-picker/DayPickerInput';
+import Helmet from 'react-helmet';
+import { DateUtils } from 'react-day-picker';
+import dateFnsFormat from 'date-fns/format';
+import dateFnsParse from 'date-fns/parse';
+import moment from 'moment';
+import theme from '../../theme';
 
 interface IDatePickerRange {
   value: { from: any; to: any };
   setValue: (a: any) => void;
 }
 
-export const DatePickerRange: FC<IDatePickerRange> = ({ value, setValue }) => {
+const DatePickerRange: FC<IDatePickerRange> = ({ value, setValue }) => {
   // const [value, setValue] = useState({ from: undefined, to: undefined });
   const ref = useRef(null);
 
-  const WEEKDAYS_SHORT = ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"];
+  const WEEKDAYS_SHORT = ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'];
   const MONTHS = [
-    "Enero",
-    "Febrero",
-    "Marzo",
-    "Abril",
-    "Mayo",
-    "Junio",
-    "Julio",
-    "Agosto",
-    "Septiembre",
-    "Octubre",
-    "Noviembre",
-    "Diciembre",
+    'Enero',
+    'Febrero',
+    'Marzo',
+    'Abril',
+    'Mayo',
+    'Junio',
+    'Julio',
+    'Agosto',
+    'Septiembre',
+    'Octubre',
+    'Noviembre',
+    'Diciembre'
   ];
 
   const parseDate = (str, format, locale) => {
@@ -45,17 +46,18 @@ export const DatePickerRange: FC<IDatePickerRange> = ({ value, setValue }) => {
     if (!from) {
       return;
     }
-    if (moment(to).diff(moment(from), "months") < 2) {
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
+    if (moment(to).diff(moment(from), 'months') < 2) {
       ref.current.getDayPicker().showMonth(from);
     }
   };
 
-  const handleFromChange = (from) => {
+  const handleFromChange = from => {
     const newstate = { ...value, from };
     setValue(newstate);
   };
 
-  const handleToChange = (to) => {
+  const handleToChange = to => {
     const newstate = { ...value, to };
     setValue(newstate);
     showFromMonth();
@@ -65,7 +67,7 @@ export const DatePickerRange: FC<IDatePickerRange> = ({ value, setValue }) => {
     return dateFnsFormat(date, format, { locale });
   };
 
-  const FORMAT = "dd/MM/yyyy";
+  const FORMAT = 'dd/MM/yyyy';
   const { from, to } = value;
   const modifiers = { start: from, end: to };
 
@@ -74,7 +76,7 @@ export const DatePickerRange: FC<IDatePickerRange> = ({ value, setValue }) => {
       <div className="InputFromTo">
         <DayPickerInput
           value={value.from}
-          placeholder={"Desde"}
+          placeholder={'Desde'}
           format={FORMAT}
           formatDate={formatDate}
           parseDate={parseDate}
@@ -89,15 +91,15 @@ export const DatePickerRange: FC<IDatePickerRange> = ({ value, setValue }) => {
             numberOfMonths: 2,
             onDayClick: () => {
               ref.current.getInput().focus();
-            },
+            }
           }}
         />
-        {""}-{""}
+        {''}-{''}
         <span className="InputFromTo-to">
           <DayPickerInput
             ref={ref}
             value={value.to}
-            placeholder={"Hasta"}
+            placeholder={'Hasta'}
             format={FORMAT}
             formatDate={formatDate}
             parseDate={parseDate}
@@ -107,7 +109,7 @@ export const DatePickerRange: FC<IDatePickerRange> = ({ value, setValue }) => {
               modifiers,
               month: from,
               fromMonth: from,
-              numberOfMonths: 2,
+              numberOfMonths: 2
             }}
             onDayChange={handleToChange}
           />
@@ -156,3 +158,5 @@ export const DatePickerRange: FC<IDatePickerRange> = ({ value, setValue }) => {
     </>
   );
 };
+
+export default DatePickerRange;

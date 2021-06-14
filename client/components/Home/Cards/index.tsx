@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   WrapperCard,
   CardType,
@@ -8,19 +8,17 @@ import {
   Chip,
   CardAmount,
   ContainerDetails,
-  Barrio,
-} from "./styles";
+  Barrio
+} from './styles';
 
-export const Card = () => {
+const Card = () => {
   return (
     <>
       <WrapperCard>
         <Barrio>Palermo</Barrio>
         <CardType>Apartamento</CardType>
 
-        <CardTitle>
-          Alquilo apartamento en bella zona centrica en palermo
-        </CardTitle>
+        <CardTitle>Alquilo apartamento en bella zona centrica en palermo</CardTitle>
 
         <ImgCard src="/house1.jpg" alt="Picture of the author" />
         <ContainerDetails>
@@ -31,7 +29,7 @@ export const Card = () => {
           <CardPrice> Direccion </CardPrice>
           <CardAmount small> Charcas 4181 </CardAmount>
         </ContainerDetails>
-        <div style={{ marginBottom: "0.5rem" }}>
+        <div style={{ marginBottom: '0.5rem' }}>
           <Chip> Completa </Chip>
           {/* <Chip color={"1"}> Flexibilidad para cancelar </Chip> */}
         </div>
@@ -43,3 +41,5 @@ export const Card = () => {
     </>
   );
 };
+
+export default Card;

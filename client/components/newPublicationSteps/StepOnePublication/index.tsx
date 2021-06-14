@@ -1,70 +1,61 @@
-import React, { useEffect, useContext } from "react";
-import Input from "../../../lib/Input";
-import {
-  DataContainer,
-  WrapperInputs,
-  Title,
-  WrapperRadioButton,
-} from "./styles";
-import { useFormik } from "formik";
-import { ValidationsData } from "./validations";
-import Select, { Option } from "react-select";
-import { theme } from "../../../theme";
-import { PublicationContext } from "../../../Context/PublicationContext";
-import { SelectField } from "../../../lib/Select";
-import RadioButton from "../../../lib/RadioButton";
-import { v4 as uuidv4 } from "uuid";
+import { useFormik } from 'formik';
+import React, { useEffect, useContext } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import Input from '../../../lib/Input';
+import { DataContainer, WrapperInputs, Title, WrapperRadioButton } from './styles';
+import { ValidationsData } from './validations';
+// import Select, { Option } from 'react-select';
+// import theme from '../../../theme';
+import { PublicationContext } from '../../../Context/PublicationContext';
+import { SelectField } from '../../../lib/Select';
+import RadioButton from '../../../lib/RadioButton';
 
 const options = [
-  { value: "CABA", label: "Ciudad Autonoma de Buenos Aires " },
-  { value: "Buenos Aires", label: "Buenos Aires" },
-  { value: "Catamarca", label: "Catamarca " },
-  { value: "Chaco", label: "Chaco " },
-  { value: "Cordoba", label: "Cordoba " },
-  { value: "Corrientes", label: "Corrientes" },
-  { value: "Mendoza", label: "Mendoza" },
+  { value: 'CABA', label: 'Ciudad Autonoma de Buenos Aires ' },
+  { value: 'Buenos Aires', label: 'Buenos Aires' },
+  { value: 'Catamarca', label: 'Catamarca ' },
+  { value: 'Chaco', label: 'Chaco ' },
+  { value: 'Cordoba', label: 'Cordoba ' },
+  { value: 'Corrientes', label: 'Corrientes' },
+  { value: 'Mendoza', label: 'Mendoza' }
 ];
 
 const optionsBarrios = [
-  { value: "Agronomía", label: "Agronomía" },
-  { value: "Almagro", label: "Almagro" },
-  { value: "Balvanera", label: "Balvanera " },
-  { value: "Barracas", label: "Barracas " },
-  { value: "Belgrano", label: "Belgrano " },
-  { value: "Boedo", label: "Boedo" },
-  { value: "Caballito", label: "Caballito" },
-  { value: "Chacarita", label: "Chacarita" },
-  { value: "Coghlan", label: "Coghlan" },
-  { value: "Colegiales", label: "Colegiales" },
-  { value: "Palermo", label: "Palermo" },
+  { value: 'Agronomía', label: 'Agronomía' },
+  { value: 'Almagro', label: 'Almagro' },
+  { value: 'Balvanera', label: 'Balvanera ' },
+  { value: 'Barracas', label: 'Barracas ' },
+  { value: 'Belgrano', label: 'Belgrano ' },
+  { value: 'Boedo', label: 'Boedo' },
+  { value: 'Caballito', label: 'Caballito' },
+  { value: 'Chacarita', label: 'Chacarita' },
+  { value: 'Coghlan', label: 'Coghlan' },
+  { value: 'Colegiales', label: 'Colegiales' },
+  { value: 'Palermo', label: 'Palermo' }
 ];
 
-export const DataPublication = () => {
-  const { setvalidSteps, steps, setnewPublication } =
-    useContext(PublicationContext);
+const DataPublication = () => {
+  const { setvalidSteps, steps, setnewPublication } = useContext(PublicationContext);
 
   const initialValues = {
-    name: "",
-    street: "",
+    name: '',
+    street: '',
     number: null,
-    province: "",
-    location: "",
-    accommodation: "",
+    province: '',
+    location: '',
+    accommodation: ''
   };
 
   const formik = useFormik({
     initialValues,
     validationSchema: ValidationsData,
-    onSubmit: async (values) => {
-      console.log("values", values);
-    },
+    onSubmit: async values => {
+      console.log('values', values);
+    }
   });
 
   useEffect(() => {
-    if (
-      Object.values(formik.errors).length === 0 &&
-      formik.values !== formik.initialValues
-    ) {
+    if (Object.values(formik.errors).length === 0 && formik.values !== formik.initialValues) {
       const auxSteps = [...steps];
       auxSteps[0].disabled = false;
       setvalidSteps(auxSteps);
@@ -72,12 +63,11 @@ export const DataPublication = () => {
   }, [formik.errors]);
 
   useEffect(() => {
-    const { name, street, number, province, location, accommodation } =
-      formik.values;
-    setnewPublication((prev) => ({
+    const { name, street, number, province, location, accommodation } = formik.values;
+    setnewPublication(prev => ({
       ...prev,
       name,
-      location: { street, number, location, province },
+      location: { street, number, location, province }
     }));
   }, [formik.values]);
 
@@ -85,13 +75,9 @@ export const DataPublication = () => {
     <>
       <DataContainer onSubmit={formik.handleSubmit}>
         <Input
-          name={"name"}
-          message={
-            formik.errors.name && formik.touched.name
-              ? { text: formik.errors.name, type: "error" }
-              : null
-          }
-          placeholder={"Coloca un titulo para publicar tu alojamiento"}
+          name={'name'}
+          message={formik.errors.name && formik.touched.name ? { text: formik.errors.name, type: 'error' } : null}
+          placeholder={'Coloca un titulo para publicar tu alojamiento'}
           disabled={false}
           onChange={formik.handleChange}
           value={formik.values.name}
@@ -100,27 +86,25 @@ export const DataPublication = () => {
         <Title>Ubicacion</Title>
         <WrapperInputs>
           <Input
-            name={"street"}
+            name={'street'}
             message={
-              formik.errors.street && formik.touched.street
-                ? { text: formik.errors.street, type: "error" }
-                : null
+              formik.errors.street && formik.touched.street ? { text: formik.errors.street, type: 'error' } : null
             }
-            placeholder={"Calle"}
+            placeholder={'Calle'}
             disabled={false}
             onChange={formik.handleChange}
             value={formik.values.street}
             onBlur={formik.handleBlur}
           />
           <Input
-            name={"number"}
+            name={'number'}
             type="number"
             message={
               formik.errors.number && formik.touched.number
-                ? { text: formik.errors.number.toString(), type: "error" }
+                ? { text: formik.errors.number.toString(), type: 'error' }
                 : null
             }
-            placeholder={"Numero / Altura"}
+            placeholder={'Numero / Altura'}
             disabled={false}
             onChange={formik.handleChange}
             value={formik.values.number}
@@ -128,38 +112,28 @@ export const DataPublication = () => {
           />
         </WrapperInputs>
         <WrapperInputs>
-          <SelectField
-            formik={formik}
-            name={"province"}
-            options={options}
-            placeholder={"Provincia"}
-          />
-          <SelectField
-            formik={formik}
-            name={"location"}
-            options={optionsBarrios}
-            placeholder={"Localidad"}
-          />
+          <SelectField formik={formik} name={'province'} options={options} placeholder={'Provincia'} />
+          <SelectField formik={formik} name={'location'} options={optionsBarrios} placeholder={'Localidad'} />
         </WrapperInputs>
 
-        <Title style={{ marginTop: "2rem" }}>Forma de alojamiento</Title>
+        <Title style={{ marginTop: '2rem' }}>Forma de alojamiento</Title>
         <WrapperRadioButton>
           <RadioButton
             id={uuidv4()}
             isSelected={formik.values.accommodation}
-            label={"Completo"}
-            value={"complete"}
+            label={'Completo'}
+            value={'complete'}
             onChange={() => {
-              formik.setValues({ ...formik.values, accommodation: "complete" });
+              formik.setValues({ ...formik.values, accommodation: 'complete' });
             }}
           />
           <RadioButton
             id={uuidv4()}
             isSelected={formik.values.accommodation}
-            label={"Parcial"}
-            value={"partial"}
+            label={'Parcial'}
+            value={'partial'}
             onChange={() => {
-              formik.setValues({ ...formik.values, accommodation: "partial" });
+              formik.setValues({ ...formik.values, accommodation: 'partial' });
             }}
           />
         </WrapperRadioButton>
@@ -167,3 +141,5 @@ export const DataPublication = () => {
     </>
   );
 };
+
+export default DataPublication;

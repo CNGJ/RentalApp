@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { theme } from "../../../theme";
+import styled from 'styled-components';
+import theme from '../../../theme';
 
 export const WrapperSearchView = styled.div`
   width: 100%;
@@ -20,5 +20,5 @@ export const WrapperMap = styled.div`
   height: 100vh;
   position: fixed;
   right: 0;
-  background: url(${(props) => props.imgUrl});
+  background: url(${props => props.imgUrl});
 `;

@@ -1,5 +1,7 @@
-import * as Yup from "yup";
+import * as Yup from 'yup';
 
-export const ValidationsData = Yup.object({
-  services: Yup.array().min(2),
+const ValidationsData = Yup.object({
+  services: Yup.array().min(2)
 });
+
+export default ValidationsData;

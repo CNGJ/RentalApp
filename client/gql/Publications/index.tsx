@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const NEW_PUBLICATION = gql`
   mutation newPublication($input: PublicationInput) {
@@ -39,3 +39,5 @@ export const NEW_PUBLICATION = gql`
     }
   }
 `;
+
+export const NEW_PEPE = gql``;
