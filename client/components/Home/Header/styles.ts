@@ -54,7 +54,6 @@ export const Icon = styled.div`
     background-color: ${theme.Terciary};
     color: white;
   }
-  
 `;
 
 export const WrapperIcons = styled.div`
