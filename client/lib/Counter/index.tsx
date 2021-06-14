@@ -1,3 +1,4 @@
+/* eslint-disable no-unneeded-ternary */
 import React, { FC } from 'react';
 import { WrapperCounter, CounterInfo, TitleCounter, CounterButtons, CounterButton } from './styles';
 

@@ -30,6 +30,7 @@ const newPublication = () => {
   };
 
   const { NewPublicationData } = useContext(PublicationContext);
+  // eslint-disable-next-line no-shadow
   const [newPublication] = useMutation(NEW_PUBLICATION);
 
   return (

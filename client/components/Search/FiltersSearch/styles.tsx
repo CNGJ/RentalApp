@@ -29,6 +29,7 @@ export const Filter = styled.div`
 export const FilterTitle = styled.p`
   margin: 0;
   ${({ small }) => {
+    // eslint-disable-next-line no-unused-expressions
     small && 'font-size: 10px;';
   }}
 `;

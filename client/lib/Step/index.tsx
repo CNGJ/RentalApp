@@ -30,7 +30,9 @@ const Step: FC<StepProps> = props => {
           setLoading(false);
           nextStep();
         }, 1000);
-      } catch (error) {}
+      } catch (error) {
+        console.log('jeje');
+      }
     } else {
       nextStep();
     }

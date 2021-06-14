@@ -9,11 +9,11 @@ import {
   Price,
   FinalPrice
 } from './styles';
-import { ValidationsData } from './validations';
+import ValidationsData from './validations';
 import { PublicationContext } from '../../../Context/PublicationContext';
-import { SelectField } from '../../../lib/Select';
+import SelectField from '../../../lib/Select';
 
-import { Counter } from '../../../lib/Counter';
+import Counter from '../../../lib/Counter';
 import Input from '../../../lib/Input';
 
 const StepThreePublication = () => {
@@ -51,7 +51,7 @@ const StepThreePublication = () => {
   ];
 
   /** */
-  //#endregion
+  // #endregion
 
   const formik = useFormik({
     initialValues,
