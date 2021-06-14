@@ -111,9 +111,17 @@ const resolvers = {
         token: buildToken(user, `${process.env.SECRET_WORD}`, '48h')
       };
     },
-    newPublication: async (_: any, { input }: typePubt) => {
+    newPublication: async (_: any, { input }: any, ctx: any) => {
+      const { user } = ctx;
+      if (!user) {
+        throw new Error('No estas autenticado');
+      }
+
+      const owner = ctx.user.id;
+      console.log('owner', owner);
+      input.owner = owner;
+
       console.log('input', input);
-      const { name, location, price, category } = input;
 
       try {
         const publication = new Publication(input);
