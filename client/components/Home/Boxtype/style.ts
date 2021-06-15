@@ -27,13 +27,13 @@ export const Icon = styled.div<{ isLast: boolean }>`
   align-items: center;
   height: 6rem;
   justify-content: center;
-  // ${props => !props.isLast && 'border-right: 0.5px solid black'};
 
   :hover {
     color: ${theme.Terciary};
-    // background-color: ${theme.Terciary}
-    // border: 1px solid ${theme.Red};
+    transform: translateY(-5%);
   }
+
+  transition: all 0.1s ease-in-out;
 `;
 
 export const Link = styled.div<{ placeholder: string }>`
