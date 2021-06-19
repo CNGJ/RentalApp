@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import Header from '../components/Home/Header';
 import {
   HomeTitle,
@@ -13,6 +14,7 @@ import {
 import Boxtype from '../components/Home/Boxtype';
 import Card from '../components/Home/Cards';
 import CardImage from '../components/Home/CardImage';
+import { ContainerInfo, ImgInfo, Info, TitleInfo, WrapperInfo, WrapperTitle } from '../components/Home/styles';
 
 export default function Home() {
   return (
@@ -33,18 +35,45 @@ export default function Home() {
       <WrapperType imgUrl={'/city-silueta.jpg'}>
         <Boxtype />
       </WrapperType>
-      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}>
+      <WrapperTitle>
         <SubTitleCards>Encuentra lo ideal para vos</SubTitleCards>
-      </div>
+      </WrapperTitle>
       <WrapperCards>
         <CardImage image="pool" title={'Con piscina'} />
         <CardImage image="beach" title={'Playa cercana'} />
         <CardImage image="pet" title={'Con tus mascotas'} />
         <CardImage image="free_air" title={'Al aire libre'} />
       </WrapperCards>
-      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}>
+      <WrapperTitle>
         <SubTitleCards>Los mejores alojamientos te esperan</SubTitleCards>
-      </div>
+      </WrapperTitle>
+      <WrapperInfo>
+        <ContainerInfo>
+          <ImgInfo src="/infouno.jpg" alt="Picture of the author" />
+          <TitleInfo> Viaja con tu pareja o familia </TitleInfo>
+          <Info>
+            It is a long established fact that a reader will be distracted by the readable content of a page when
+            looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
+          </Info>
+        </ContainerInfo>
+        <ContainerInfo>
+          <ImgInfo src="/infodos.jpg" alt="Picture of the author" />
+          <TitleInfo> Viaja para tus negocios </TitleInfo>
+          <Info>
+            It is a long established fact that a reader will be distracted by the readable content of a page when
+            looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of
+            letters, as opposed to using Content here, content here, making it look like readable English.
+          </Info>
+        </ContainerInfo>
+        <ContainerInfo>
+          <ImgInfo src="/infotres.jpg" alt="Picture of the author" />
+          <TitleInfo> Viaja con tus amigos </TitleInfo>
+          <Info>
+            It is a long established fact that a reader will be distracted by the readable content of a page when
+            looking at its layout. The point of using Lorem Ipsum
+          </Info>
+        </ContainerInfo>
+      </WrapperInfo>
       <WrapperCards>
         <Card />
         <Card />

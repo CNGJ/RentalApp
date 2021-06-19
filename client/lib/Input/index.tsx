@@ -15,6 +15,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   message?: IFieldMessage;
   'data-testid'?: string;
   marginB?: string;
+  marginR?: string;
 }
 const Input: FC<InputProps> = props => {
   const [hasValue, setHasValue] = useState(false);
@@ -27,6 +28,7 @@ const Input: FC<InputProps> = props => {
       width={props.width}
       disabled={props.disabled}
       marginB={props.marginB}
+      marginR={props.marginR}
       placeholder={props.placeholder}
     >
       <StyledInput

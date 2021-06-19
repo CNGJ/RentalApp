@@ -11,9 +11,10 @@ interface ISelectProps {
   isMulti?: boolean;
   width?: string;
   disabled?: boolean;
+  marginR?: string;
 }
-const SelectField: FC<ISelectProps> = ({ options, formik, placeholder, name, isMulti, width, disabled }) => (
-  <WrapperSelect width={width}>
+const SelectField: FC<ISelectProps> = ({ options, formik, placeholder, name, isMulti, width, disabled, marginR }) => (
+  <WrapperSelect width={width} marginR={marginR}>
     <Select
       styles={!isMulti ? customStylesSelect : customStylesSelectMulti}
       name={name}
