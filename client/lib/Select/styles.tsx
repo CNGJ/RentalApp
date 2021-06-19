@@ -4,8 +4,7 @@ import theme from '../../theme';
 
 export const WrapperSelect = styled.div`
   width: ${({ width }) => (width ? width : '100%')};
-  margin-right: 1px;
-  margin-left: 1px;
+  margin-right: ${({ marginR }) => marginR && `${marginR}`};
 `;
 
 export const customStylesSelect = {

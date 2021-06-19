@@ -1,7 +1,10 @@
 import React, { createContext, FC, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
+import styled from 'styled-components';
+import PuffLoader from 'react-spinners/PuffLoader';
 import Modal from '../lib/Modal';
 import 'react-toastify/dist/ReactToastify.css';
+import theme from '../theme';
 
 export interface InfoModal {
   children?: JSX.Element;
@@ -21,7 +24,9 @@ export interface InfoModal {
 
 export interface ContextPropsModal {
   showModal: boolean;
+  showSpinner: boolean;
   setShowModal: (param: boolean) => void;
+  setshowSpinner: (param: boolean) => void;
   infoModal?: InfoModal;
   setInfoModal: (param?: InfoModal) => void;
   ToastError: (msg: string) => void;
@@ -31,7 +36,9 @@ export interface ContextPropsModal {
 
 export const initialProps: ContextPropsModal = {
   showModal: false,
+  showSpinner: false,
   setShowModal: null,
+  setshowSpinner: null,
   infoModal: {},
   setInfoModal: null,
   ToastError: null,
@@ -39,11 +46,27 @@ export const initialProps: ContextPropsModal = {
   ToastInfo: null
 };
 
+export const SpinnerContainer = styled.div`
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 600;
+  background-color: rgba(255, 255, 255, 0.6);
+`;
+
 const ModalContext = createContext(initialProps);
 
 const ModalProvider: FC = ({ children }) => {
   const [showModal, setShowModal] = useState(initialProps.showModal);
   const [infoModal, setInfoModal] = useState<InfoModal>(initialProps.infoModal);
+  const [showSpinner, setshowSpinner] = useState(initialProps.showSpinner);
   // const [children, setchildren] = useState<JSX.Element>(null)
   const ToastError = (msg: string) =>
     toast.error(msg, {
@@ -69,7 +92,9 @@ const ModalProvider: FC = ({ children }) => {
         setInfoModal,
         ToastError,
         ToastSuccess,
-        ToastInfo
+        ToastInfo,
+        showSpinner,
+        setshowSpinner
       }}
     >
       {children}
@@ -84,6 +109,11 @@ const ModalProvider: FC = ({ children }) => {
       >
         {infoModal?.children || ''}
       </Modal>
+      {showSpinner && (
+        <SpinnerContainer>
+          <PuffLoader color={theme.Terciary} loading={showSpinner} size={100} />
+        </SpinnerContainer>
+      )}
       <ToastContainer />
     </ModalContext.Provider>
   );

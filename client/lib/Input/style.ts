@@ -35,14 +35,18 @@ export const InputContainer = styled.div<{
   hasValue;
   width;
   marginB;
+  marginR;
+  marginL;
 }>`
   background-color: ${({ disabled }) => (disabled ? '#dadada' : '#ffffff')};
   pointer-events: ${({ disabled }) => (disabled ? 'none' : '')};
   max-width: 100%;
-  width: ${({ width }) => (width ? `${width}px` : '100%')};
+  width: ${({ width }) => (width ? `${width}` : '100%')};
   position: relative;
   border-radius: 4px 4px 0 0;
   margin-bottom: ${({ marginB }) => (marginB ? `${marginB}px` : '1.4rem')};
+  margin-right: ${({ marginR }) => marginR && `${marginR}`};
+  margin-left: ${({ marginL }) => marginL && `${marginL}`};
   box-shadow: rgb(0 0 0 / 20%) 0px 2px 5px;
   &::before {
     position: absolute;

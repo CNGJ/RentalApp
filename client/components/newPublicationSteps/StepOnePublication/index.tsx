@@ -1,42 +1,70 @@
 import { useFormik } from 'formik';
-import React, { useEffect, useContext } from 'react';
+import React, { FC, useEffect, useContext, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Input from '../../../lib/Input';
 import { DataContainer, WrapperInputs, Title, WrapperRadioButton } from './styles';
 import ValidationsData from './validations';
-// import Select, { Option } from 'react-select';
-// import theme from '../../../theme';
 import { PublicationContext } from '../../../Context/PublicationContext';
 import SelectField from '../../../lib/Select';
 import RadioButton from '../../../lib/RadioButton';
 
-const options = [
-  { value: 'CABA', label: 'Ciudad Autonoma de Buenos Aires ' },
-  { value: 'Buenos Aires', label: 'Buenos Aires' },
-  { value: 'Catamarca', label: 'Catamarca ' },
-  { value: 'Chaco', label: 'Chaco ' },
-  { value: 'Cordoba', label: 'Cordoba ' },
-  { value: 'Corrientes', label: 'Corrientes' },
-  { value: 'Mendoza', label: 'Mendoza' }
-];
+const locationMocks = {
+  Argentina: [
+    {
+      name: { value: 'CABA', label: 'Ciudad Autonoma de Buenos Aires ' },
+      locations: [
+        { value: 'Agronomía', label: 'Agronomía' },
+        { value: 'Almagro', label: 'Almagro' },
+        { value: 'Balvanera', label: 'Balvanera ' },
+        { value: 'Barracas', label: 'Barracas ' },
+        { value: 'Belgrano', label: 'Belgrano ' },
+        { value: 'Boedo', label: 'Boedo' },
+        { value: 'Caballito', label: 'Caballito' },
+        { value: 'Chacarita', label: 'Chacarita' },
+        { value: 'Coghlan', label: 'Coghlan' },
+        { value: 'Colegiales', label: 'Colegiales' },
+        { value: 'Palermo', label: 'Palermo' }
+      ]
+    },
+    {
+      name: { value: 'Buenos Aires', label: 'Buenos Aires' },
+      locations: [
+        { value: 'Agronomía', label: 'Agronomía' },
+        { value: 'Almagro', label: 'Almagro' },
+        { value: 'Balvanera', label: 'Balvanera ' },
+        { value: 'Barracas', label: 'Barracas ' },
+        { value: 'Belgrano', label: 'Belgrano ' },
+        { value: 'Boedo', label: 'Boedo' },
+        { value: 'Caballito', label: 'Caballito' },
+        { value: 'Chacarita', label: 'Chacarita' },
+        { value: 'Coghlan', label: 'Coghlan' },
+        { value: 'Colegiales', label: 'Colegiales' },
+        { value: 'Palermo', label: 'Palermo' }
+      ]
+    },
+    {
+      name: { value: 'Catamarca', label: 'Catamarca ' },
+      locations: [
+        { value: 'Agronomía', label: 'Agronomía' },
+        { value: 'Almagro', label: 'Almagro' },
+        { value: 'Balvanera', label: 'Balvanera ' },
+        { value: 'Barracas', label: 'Barracas ' },
+        { value: 'Belgrano', label: 'Belgrano ' },
+        { value: 'Boedo', label: 'Boedo' },
+        { value: 'Caballito', label: 'Caballito' },
+        { value: 'Chacarita', label: 'Chacarita' },
+        { value: 'Coghlan', label: 'Coghlan' },
+        { value: 'Colegiales', label: 'Colegiales' },
+        { value: 'Palermo', label: 'Palermo' }
+      ]
+    }
+  ]
+};
 
-const optionsBarrios = [
-  { value: 'Agronomía', label: 'Agronomía' },
-  { value: 'Almagro', label: 'Almagro' },
-  { value: 'Balvanera', label: 'Balvanera ' },
-  { value: 'Barracas', label: 'Barracas ' },
-  { value: 'Belgrano', label: 'Belgrano ' },
-  { value: 'Boedo', label: 'Boedo' },
-  { value: 'Caballito', label: 'Caballito' },
-  { value: 'Chacarita', label: 'Chacarita' },
-  { value: 'Coghlan', label: 'Coghlan' },
-  { value: 'Colegiales', label: 'Colegiales' },
-  { value: 'Palermo', label: 'Palermo' }
-];
-
-const DataPublication = () => {
+const DataPublication: FC = () => {
   const { setvalidSteps, steps, setnewPublication } = useContext(PublicationContext);
-
+  const [provinces, setprovinces] = useState([]);
+  const [locations, setlocations] = useState([]);
   const initialValues = {
     name: '',
     street: '',
@@ -45,6 +73,14 @@ const DataPublication = () => {
     location: '',
     accommodation: ''
   };
+
+  useEffect(() => {
+    const provincias = Object.values(locationMocks.Argentina).reduce((acc, el) => {
+      acc.push(el.name);
+      return acc;
+    }, []);
+    setprovinces(provincias);
+  }, []);
 
   const formik = useFormik({
     initialValues,
@@ -61,6 +97,14 @@ const DataPublication = () => {
       setvalidSteps(auxSteps);
     }
   }, [formik.errors]);
+
+  useEffect(() => {
+    if (formik.values.province !== '') {
+      const locaciones = Object.values(locationMocks.Argentina).filter(x => x.name.value === formik.values.province)[0]
+        .locations;
+      setlocations(locaciones);
+    }
+  }, [formik.values.province]);
 
   useEffect(() => {
     const { name, street, number, province, location, accommodation } = formik.values;
@@ -92,6 +136,7 @@ const DataPublication = () => {
             }
             placeholder={'Calle'}
             disabled={false}
+            marginR="1rem"
             onChange={formik.handleChange}
             value={formik.values.street}
             onBlur={formik.handleBlur}
@@ -112,8 +157,20 @@ const DataPublication = () => {
           />
         </WrapperInputs>
         <WrapperInputs>
-          <SelectField formik={formik} name={'province'} options={options} placeholder={'Provincia'} />
-          <SelectField formik={formik} name={'location'} options={optionsBarrios} placeholder={'Localidad'} />
+          <SelectField
+            formik={formik}
+            marginR={'1rem'}
+            name={'province'}
+            options={provinces}
+            placeholder={'Provincia'}
+          />
+          <SelectField
+            formik={formik}
+            disabled={locations.length === 0}
+            name={'location'}
+            options={locations}
+            placeholder={'Localidad'}
+          />
         </WrapperInputs>
 
         <Title style={{ marginTop: '2rem' }}>Forma de alojamiento</Title>

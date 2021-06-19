@@ -6,7 +6,7 @@ export const DataContainer = styled.form`
 
 export const WrapperInputs = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 `;
 
 export const Title = styled.p`
