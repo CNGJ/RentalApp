@@ -1,10 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { faBed, faDoorClosed, faStar, faUser, faUsers, faBath } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { WrapperCard, Title, Fav, ImgCard, Type, WrapperIcons, SpanIcons, WrapIconSpan, Price, Score } from './styles';
 
-const CardSearch = () => {
+// esta bien que sean opcionales? puede pasar que no haya cocina?
+interface Features {
+  toilets?: number;
+  bedrooms?: number;
+  environments?: number;
+  kitchen?: number;
+}
+
+//poner type como obligatorio
+interface CardInfo {
+  type?: string;
+  name: string;
+  guests: number;
+  features: Features;
+  price: number;
+}
+
+const CardSearch = (cardInfo: CardInfo) => {
+  const { type, name, guests, features, price } = cardInfo;
+
+  useEffect(() => {
+    console.log('cambio el card');
+  }, [cardInfo]);
+
   return (
     <>
       <WrapperCard
@@ -22,22 +45,23 @@ const CardSearch = () => {
         <ImgCard src="/house1.jpg" alt="Picture of the author" />
         <div style={{ position: 'relative' }}>
           <Type>Casa</Type>
-          <Title> Casa de campo en Tigre excelente para el verano </Title>
+          <Title> {name}</Title>
           <WrapperIcons>
             <WrapIconSpan tooltip={'Huespedes'}>
-              <SpanIcons>2</SpanIcons>
+              <SpanIcons>{guests}</SpanIcons>
               <FontAwesomeIcon icon={faUsers} size="lg" />
             </WrapIconSpan>
+            {/* bedrooms son habitaciones, como diferenciamos las camas? */}
             <WrapIconSpan tooltip={'Camas'}>
-              <SpanIcons>2</SpanIcons>
+              <SpanIcons>{features.bedrooms}</SpanIcons>
               <FontAwesomeIcon icon={faBed} size="lg" />
             </WrapIconSpan>
             <WrapIconSpan tooltip={'Dormitorios'}>
-              <SpanIcons>2</SpanIcons>
+              <SpanIcons>{features.bedrooms}</SpanIcons>
               <FontAwesomeIcon icon={faDoorClosed} size="lg" />
             </WrapIconSpan>
             <WrapIconSpan tooltip={'Baños'}>
-              <SpanIcons>2</SpanIcons>
+              <SpanIcons>{features.toilets}</SpanIcons>
               <FontAwesomeIcon icon={faBath} size="lg" />
             </WrapIconSpan>
           </WrapperIcons>
@@ -47,7 +71,7 @@ const CardSearch = () => {
         </div>
 
         <Price>
-          <span style={{ fontSize: '14px' }}> c/noche </span> $ 1000.85
+          <span style={{ fontSize: '14px' }}> c/noche </span> $ {price}
         </Price>
       </WrapperCard>
     </>

@@ -1,19 +1,21 @@
 import React, { createContext, FC, useEffect, useState } from 'react';
-import { useQuery, OperationVariables, ApolloQueryResult } from '@apollo/client';
-import { GET_USER } from '../gql/Users';
-
-interface Istep {
-  valid;
-}
+import { useQuery } from '@apollo/client';
+import { GET_PUBLICATIONS_SEARCH } from '../gql/Publications';
 
 export interface ContextPropsProfile {
   steps?: any;
   setvalidSteps: (a: any) => void;
   setnewPublication: (a: any) => void;
   NewPublicationData: IPublication;
+  searchPublications: IPublication[];
+  searchFilters: ISearchFilters;
+  setSearchPublications: (publications: IPublication[]) => void;
+  setSearchFilters: (filters: ISearchFilters) => void;
+  isLoading: boolean;
 }
 
 export interface IPublication {
+  id: string;
   name: string;
   location: ILocation;
   price: number;
@@ -45,6 +47,15 @@ export interface ITerms {
   sex: string;
 }
 
+export interface ISearchFilters {
+  destination: string;
+  from: string;
+  to: string;
+  adults: number;
+  kids: number;
+  pets: number;
+}
+
 export const initialProps: ContextPropsProfile = {
   steps: [
     { key: 1, disabled: true },
@@ -54,6 +65,7 @@ export const initialProps: ContextPropsProfile = {
   setvalidSteps: null,
   setnewPublication: null,
   NewPublicationData: {
+    id: '',
     name: '',
     location: {
       street: '',
@@ -76,7 +88,19 @@ export const initialProps: ContextPropsProfile = {
       kitchen: 0
     },
     rules: []
-  }
+  },
+  searchPublications: [],
+  searchFilters: {
+    adults: 0,
+    kids: 0,
+    pets: 0,
+    destination: '',
+    from: '',
+    to: ''
+  },
+  setSearchPublications: null,
+  setSearchFilters: null,
+  isLoading: false
 };
 
 const PublicationContext = createContext(initialProps);
@@ -84,8 +108,25 @@ const PublicationContext = createContext(initialProps);
 const PublicationProvider: FC = ({ children }) => {
   const [validSteps, setvalidSteps] = useState(initialProps.steps);
   const [NewPublicationData, setnewPublication] = useState<IPublication>(initialProps.NewPublicationData);
+  const [searchPublications, setSearchPublications] = useState(initialProps.searchPublications);
+  const [searchFilters, setSearchFilters] = useState(initialProps.searchFilters);
+  const [isLoading, setIsLoading] = useState(initialProps.isLoading);
+  const { data, loading } = useQuery(GET_PUBLICATIONS_SEARCH, {
+    variables: {
+      input: {
+        ...searchFilters
+      }
+    }
+  });
 
-  // const { data, error, loading, refetch } = useQuery(GET_USER);
+  useEffect(() => {
+    if (!loading) {
+      if (data && data.getPublicationsSearch) {
+        setSearchPublications(data.getPublicationsSearch);
+      }
+    }
+    setIsLoading(loading);
+  }, [loading, searchFilters]);
 
   return (
     <PublicationContext.Provider
@@ -93,7 +134,15 @@ const PublicationProvider: FC = ({ children }) => {
         steps: validSteps,
         setvalidSteps,
         setnewPublication,
-        NewPublicationData
+        NewPublicationData,
+        searchPublications,
+        searchFilters,
+        setSearchPublications,
+        setSearchFilters,
+        isLoading
+        // setPublicationsSearch,
+        // publicationsSearch,
+        // searchRefetch
         // setprofile,
       }}
     >
