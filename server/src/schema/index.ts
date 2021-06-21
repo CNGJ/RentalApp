@@ -12,10 +12,11 @@ const typeDefs = gql`
   type Query {
     #Usuarios
     getUser: User
-    
+
     #Publicaciones
     getPublications: [Publication]
-    getPublication(id: ID!) : Publication
+    getPublicationsSearch(input: PublicationsSearchInput): [Publication]
+    getPublication(id: ID!): Publication
   }
 
   #MUTATIONS

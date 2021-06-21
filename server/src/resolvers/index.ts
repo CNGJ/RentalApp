@@ -64,6 +64,28 @@ const resolvers = {
         console.log(error);
       }
     },
+    getPublicationsSearch: async (_: any, { input }: any) => {
+      console.log('getPublicationsSearch inputs:', input);
+      try {
+        const { destination, from, to, kids, adults, pets } = input;
+
+        const publications = await Publication.find({
+          $and: [
+            // destination ? {'location.province': destination} : { $not:{'location.province': destination}}
+            destination !== '' ? { 'location.province': destination } : { 'location.province': { $ne: 'trueValue' } },
+            { 'terms.adults': adults },
+            { 'terms.kids': kids },
+            { 'terms.pets': pets }
+          ]
+        });
+
+        console.log(publications);
+
+        return publications;
+      } catch (error) {
+        console.log(error);
+      }
+    },
     getPublication: async (_: any, { id }: any) => {
       console.log('id', id);
       try {

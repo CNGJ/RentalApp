@@ -65,6 +65,15 @@ const inputs = gql`
     from: String!
     to: String!
   }
+
+  input PublicationsSearchInput {
+    destination: String!
+    from: String
+    to: String
+    adults: Int
+    kids: Int
+    pets: Int
+  }
 `;
 
 export default inputs;
