@@ -28,7 +28,7 @@ const Login = () => {
   const [Usernew, setnewUser] = useState(false);
   const [newUser] = useMutation(NEW_USER);
   const [authenticate] = useMutation(AUTHENTICATE);
-  const { ToastError, ToastSuccess, setShowModal } = useContext(ModalContext);
+  const { ToastError, ToastSuccess, setShowModal, setshowSpinner } = useContext(ModalContext);
   const { refetch } = useContext(ProfileContext);
 
   // ESTO TIENE QUE IR EN OTRO LADO servicios
@@ -62,11 +62,14 @@ const Login = () => {
     validationSchema: ValidationsLogin,
     onSubmit: async values => {
       try {
+        setshowSpinner(true);
         await loginService(values);
         refetch();
         ToastSuccess('Iniciaste sesion');
         setShowModal(false);
+        setshowSpinner(false);
       } catch (error) {
+        setshowSpinner(false);
         console.log('error', error);
         ToastError('Tus credenciales son incorrectas, vuelve a intentarlo');
       }
@@ -79,12 +82,15 @@ const Login = () => {
     onSubmit: async values => {
       const { email, password } = values;
       try {
+        setshowSpinner(true);
         await registerService(values);
         ToastSuccess('Usuario creado con exito');
         await loginService({ email, password });
         refetch();
         setShowModal(false);
+        setshowSpinner(false);
       } catch (error) {
+        setshowSpinner(false);
         console.log('error', error);
         ToastError('Ocurrio un error, no logramos crear tu cuenta');
       }
