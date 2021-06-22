@@ -134,6 +134,8 @@ const resolvers = {
       };
     },
     newPublication: async (_: any, { input }: any, ctx: any) => {
+      console.log(input, 'input');
+
       const { user } = ctx;
       if (!user) {
         throw new Error('No estas autenticado');

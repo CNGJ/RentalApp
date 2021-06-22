@@ -8,7 +8,7 @@ import Step from '../lib/Step';
 import DataPublication from '../components/newPublicationSteps/StepOnePublication';
 import StepTwoPublication from '../components/newPublicationSteps/StepTwoPublication';
 import StepThreePublication from '../components/newPublicationSteps/StepThreePublication';
-import FinalStepNewPublication from '../components/newPublicationSteps/FinalStep';
+import FinalStepNewPublication from '../components/newPublicationSteps/Result';
 import { PublicationContext } from '../Context/PublicationContext';
 import { NEW_PUBLICATION } from '../gql/Publications';
 

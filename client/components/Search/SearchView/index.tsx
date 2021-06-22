@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Filters from '../FiltersSearch';
 import { WrapperResults, WrapperSearchView, WrapperMap } from './styles';
-import { SearchResults } from '../SearchResults/index';
+import SearchResults from '../SearchResults/index';
 
-const SearchView = () => {
+const SearchView: FC = () => {
   return (
     <>
       <WrapperSearchView>
