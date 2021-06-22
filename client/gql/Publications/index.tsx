@@ -5,37 +5,6 @@ export const NEW_PUBLICATION = gql`
     newPublication(input: $input) {
       id
       name
-      location {
-        street
-        number
-        location
-        province
-      }
-      price
-      owner
-      guests {
-        guest
-      }
-      created
-      services
-      description
-      terms {
-        adults
-        kids
-        pets
-        sex
-      }
-      rules
-      features {
-        toilets
-        bedrooms
-        Beds
-        bunkBeds
-        pool
-        balcony
-        kitchen
-        yard
-      }
     }
   }
 `;

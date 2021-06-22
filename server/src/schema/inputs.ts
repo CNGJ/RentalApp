@@ -52,7 +52,6 @@ const inputs = gql`
     name: String!
     location: Locationinput!
     price: Float!
-    owner: ID!
     services: [String]!
     description: String
     terms: termsInput!

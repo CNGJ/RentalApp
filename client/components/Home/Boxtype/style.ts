@@ -36,7 +36,7 @@ export const Icon = styled.div<{ isLast: boolean }>`
   transition: all 0.1s ease-in-out;
 `;
 
-export const Link = styled.div<{ placeholder: string }>`
+export const Link = styled.div<{ placeholder?: string }>`
   font-size: 1rem;
   margin-top: 1rem;
   line-height: 1.5;

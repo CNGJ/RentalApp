@@ -5,6 +5,7 @@ import PacmanLoader from 'react-spinners/PacmanLoader';
 import { PublicationContext } from '../../Context/PublicationContext';
 import { WrapperStep, StepContainer, Title, ContainerButtonOut, Button, SpinnerContainer } from './styles';
 import theme from '../../theme';
+import { ModalContext } from '../../Context/ModalContext';
 
 interface StepProps extends StepWizardChildProps {
   title?: string;
@@ -16,6 +17,7 @@ interface StepProps extends StepWizardChildProps {
 
 const Step: FC<any> = props => {
   const { steps } = useContext(PublicationContext);
+  const { setshowSpinner } = useContext(ModalContext);
   const [loading, setLoading] = useState(false);
   const { currentStep, firstStep, goToStep, lastStep, nextStep, previousStep, totalSteps, paramSubmit, onSubmit } =
     props;
@@ -23,11 +25,10 @@ const Step: FC<any> = props => {
   const handleNext = async () => {
     if (currentStep === totalSteps - 1) {
       try {
-        setLoading(true);
+        setshowSpinner(true);
         const { data } = await onSubmit(paramSubmit);
         setTimeout(() => {
-          console.log('data', data);
-          setLoading(false);
+          setshowSpinner(false);
           nextStep();
         }, 1000);
       } catch (error) {
@@ -44,11 +45,7 @@ const Step: FC<any> = props => {
         <StepContainer>
           <Title> {props.title}</Title>
 
-          {!loading && <> {props.Stepchildren} </>}
-
-          <SpinnerContainer>
-            <PacmanLoader color={theme.Terciary} loading={loading} size={70} />
-          </SpinnerContainer>
+          {props.Stepchildren}
         </StepContainer>
 
         {!(totalSteps === currentStep) && (

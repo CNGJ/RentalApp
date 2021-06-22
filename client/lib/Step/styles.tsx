@@ -20,7 +20,7 @@ export const StepContainer = styled.div`
   margin-top: 4rem;
 
   @media (max-width: 1600px) {
-    height: 67vh;
+    height: 75vh;
     width: 60%;
     margin-top: 0px;
   }
@@ -34,7 +34,7 @@ export const Title = styled.p`
   color: #666;
 `;
 
-export const ContainerButtonOut = styled.div`
+export const ContainerButtonOut = styled.div<{ first: boolean }>`
   display: flex;
   margin-top: 1rem;
   width: 50%;
