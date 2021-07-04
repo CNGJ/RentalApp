@@ -2,10 +2,10 @@ import styled from 'styled-components';
 import theme from '../../../theme';
 
 export const WrapperCard = styled.div`
-  padding: 0.1rem;
+  padding: 0.5rem;
   margin: 0.5rem;
   margin-bottom: 1rem;
-  border-radius: 0.3rem;
+  border-radius: 1rem;
   background: ${theme.White};
   position: relative;
   display: flex;
@@ -15,6 +15,7 @@ export const WrapperCard = styled.div`
   :hover {
     box-shadow: 0 8px 6px -6px black;
   }
+  transition: all 0.3s ease-in-out;
 `;
 
 export const Fav = styled.div`

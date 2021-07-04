@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { OfficeBuildingIcon, HomeIcon, KeyIcon, MoonIcon, PhotographIcon } from '@heroicons/react/outline';
 import theme from '../../../theme';
 
 export const WrapperBoxType = styled.div`
@@ -44,10 +45,22 @@ export const Link = styled.div<{ placeholder?: string }>`
   font-weight: 450;
 `;
 
-export const SpanIcon = styled.div`
-  padding: 0.7rem;
-  margin-right: 1rem;
-  // border: 1px solid ${theme.Blue2};
-  background: ${theme.Terciary};
-  border-radius: 50%;
+export const Building = styled(OfficeBuildingIcon)`
+  width: 2rem;
+`;
+
+export const Home = styled(HomeIcon)`
+  width: 2rem;
+`;
+
+export const Room = styled(KeyIcon)`
+  width: 2rem;
+`;
+
+export const Cabana = styled(MoonIcon)`
+  width: 2rem;
+`;
+
+export const Campo = styled(PhotographIcon)`
+  width: 2rem;
 `;

@@ -1,39 +1,24 @@
-import React from 'react';
-// import {
-//   faBed,
-//   faDoorClosed,
-//   faStar,
-//   faUser,
-//   faUsers,
-//   faBath,
-// } from "@fortawesome/free-solid-svg-icons";
-import { faMoneyBillAlt, faNewspaper, faCalendar, faSun, faCircle } from '@fortawesome/free-regular-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { WrapperFilters, Filter, FilterTitle } from './styles';
+import React, { FC, useContext } from 'react';
+import { ModalContext } from '../../../Context/ModalContext';
+import { WrapperFilters, Filter, FilterTitle, IconFilter } from './styles';
 
-const Filters = () => {
+const Filters: FC = () => {
+  const { setShowSide, setInfoSide } = useContext(ModalContext);
+
   return (
     <>
       <WrapperFilters>
-        <Filter>
-          <FontAwesomeIcon icon={faMoneyBillAlt} size="lg" />
-          <FilterTitle>Precio</FilterTitle>
-        </Filter>
-        <Filter>
-          <FontAwesomeIcon icon={faNewspaper} size="lg" />
-          <FilterTitle>Tipo</FilterTitle>
-        </Filter>
-        <Filter>
-          <FontAwesomeIcon icon={faCalendar} size="lg" />
-          <FilterTitle>Flexibilidad</FilterTitle>
-        </Filter>
-        <Filter>
-          <FontAwesomeIcon icon={faSun} size="lg" />
-          <FilterTitle>Piscina</FilterTitle>
-        </Filter>
-        <Filter>
-          <FontAwesomeIcon icon={faCircle} size="lg" />
-          <FilterTitle> + Filtros</FilterTitle>
+        <Filter
+          onClick={() => {
+            setInfoSide({
+              title: 'Filtros',
+              children: <p> Todo </p>
+            });
+            setShowSide(true);
+          }}
+        >
+          <IconFilter />
+          <FilterTitle>Filtrar</FilterTitle>
         </Filter>
       </WrapperFilters>
     </>

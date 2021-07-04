@@ -10,10 +10,11 @@ export const WrapperResults = styled.div`
   width: 45%;
   height: 100vh;
   margin-top: 7rem;
+  padding: 1rem;
 `;
 
-export const WrapperMap = styled.div`
-  width: 55%;
+export const WrapperMap = styled.div<{ imgUrl: any }>`
+  width: 53%;
   border: 1px solid;
   border-radius: 1rem;
   background: black;
