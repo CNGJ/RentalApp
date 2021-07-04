@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { SearchIcon } from '@heroicons/react/outline';
 import theme from '../../../theme';
 
 export const WrapperSearchBox = styled.form`
@@ -18,26 +19,27 @@ export const InputBox = styled.div`
 `;
 
 export const Button = styled.button`
-  padding: 1.2rem;
   border-radius: 40px;
-  width: 3.4rem;
+  width: 3rem;
+  height: 3rem;
   color: ${theme.Ligth};
   background: ${theme.Terciary};
   border: none;
+  margin-right: 1rem;
   cursor: pointer;
 
   :hover {
-    background: ${theme.Orange};
+    background: ${theme.Terciary};
   }
 
   :disabled {
-    background-color: ${theme.Orange_Opacity};
-    color: ${theme.Gray};
+    background-color: ${theme.Terciary_Op};
+    color: ${theme.White};
     cursor: not-allowed;
   }
 `;
 
-export const OverlayBox = styled.div<{ content: JSX.Element }>`
+export const OverlayBox = styled.div<{ content: any }>`
   position: relative;
 
   ::after {
@@ -49,4 +51,8 @@ export const OverlayBox = styled.div<{ content: JSX.Element }>`
     padding: 1rem;
     background-color: green;
   }
+`;
+
+export const Search = styled(SearchIcon)`
+  width: 1.5rem;
 `;

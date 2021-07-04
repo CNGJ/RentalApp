@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { UserIcon, PencilAltIcon } from '@heroicons/react/outline';
 import theme from '../../../theme';
 
 export const Subtitle = styled.p`
@@ -35,4 +36,10 @@ export const ButtonContainer = styled.div`
   justify-content: center;
 `;
 
-export const LoginWrapper = styled.div``;
+export const User = styled(UserIcon)`
+  width: 1.5rem;
+`;
+
+export const UserEdit = styled(PencilAltIcon)`
+  width: 1.5rem;
+`;

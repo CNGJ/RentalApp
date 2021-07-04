@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { CheckIcon } from '@heroicons/react/outline';
 import theme from '../../../theme';
 
 export const WrapperResult = styled.div`
@@ -6,6 +7,11 @@ export const WrapperResult = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: center;
+`;
+
+export const Check = styled(CheckIcon)`
+  width: 4rem;
+  color: ${theme.Green};
 `;
 
 export const ContainerButton = styled.div`

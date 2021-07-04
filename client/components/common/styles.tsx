@@ -22,7 +22,7 @@ export const SpanTitle = styled.span`
   color: ${theme.Terciary};
 `;
 
-export const WrapperHome = styled.div<{ column: boolean }>`
+export const WrapperHome = styled.div<{ column?: boolean }>`
   display: flex;
   ${props =>
     props.column
@@ -37,9 +37,9 @@ export const TitleContainer = styled.div`
 `;
 
 export const SubTitle = styled.p<{
-  red: boolean;
-  bold: boolean;
-  opacity: boolean;
+  red?: boolean;
+  bold?: boolean;
+  opacity?: boolean;
 }>`
   font-size: 1.2rem;
   line-height: 1.5;
@@ -56,7 +56,7 @@ export const TitleIcon = styled.div`
   margin-left: 0.5rem;
 `;
 
-export const WrapperType = styled.div`
+export const WrapperType = styled.div<{ imgUrl?: any }>`
   display: flex;
   flex-direction: column;
   align-items: center;

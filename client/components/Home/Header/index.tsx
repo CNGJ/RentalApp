@@ -1,16 +1,13 @@
 /* eslint-disable react/prop-types */
 import React, { useContext, FC, useEffect, useState, useRef } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useRouter } from 'next/router';
-import { faUser, faUserAstronaut, faPowerOff, faFolderPlus } from '@fortawesome/free-solid-svg-icons';
-import theme from '../../../theme';
-import { Icon, WrapperHeader, WrapperIcons } from './styles';
+import { Icon, WrapperHeader, WrapperIcons, User, Home, Logout, Collection } from './styles';
 import { ModalContext } from '../../../Context/ModalContext';
 import { ProfileContext } from '../../../Context/ProfileContext';
-import Logout from '../../UserSession/Logout';
 import SearchBar from '../SearchBar';
 import ProfileMenu from '../ProfileMenu/index';
 import Login from '../../UserSession/Login';
+import LogoutComponent from '../../UserSession/Logout';
 
 interface IHeaderProps {
   fixed?: boolean;
@@ -58,7 +55,7 @@ const Header: FC<IHeaderProps> = ({ fixed }) => {
   const logOut = () => {
     setShowModal(!showModal);
     setInfoModal({
-      children: <Logout />,
+      children: <LogoutComponent />,
       title: 'Cerrar sesión'
     });
   };
@@ -70,31 +67,21 @@ const Header: FC<IHeaderProps> = ({ fixed }) => {
   return (
     <>
       <WrapperHeader fixed={fixed}>
-        <FontAwesomeIcon
-          onClick={goHome}
-          icon={faUserAstronaut}
-          style={{ color: `${theme.Primary}`, cursor: 'pointer' }}
-        />
+        <Home onClick={goHome} />
         <SearchBar />
 
         <WrapperIcons ref={ref}>
           <Icon onClick={handleProfile} tooltip={profile ? profile.name : null}>
-            <FontAwesomeIcon icon={faUser} style={{ color: `${theme.Primary}` }} />
+            <User />
             {showProfileMenu && <ProfileMenu />}
           </Icon>
-          {/* <Icon>
-            <FontAwesomeIcon
-              icon={faUsers}
-              style={{ color: `${theme.Primary}` }}
-            />
-          </Icon> */}
           {profile && (
             <>
               <Icon onClick={handleNewPublication}>
-                <FontAwesomeIcon icon={faFolderPlus} style={{ color: `${theme.Primary}` }} />
+                <Collection />
               </Icon>
-              <Icon onClick={logOut}>
-                <FontAwesomeIcon icon={faPowerOff} style={{ color: `${theme.Primary}` }} />
+              <Icon onClick={logOut} logout>
+                <Logout />
               </Icon>
             </>
           )}

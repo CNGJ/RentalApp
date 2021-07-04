@@ -1,8 +1,6 @@
 import React, { useContext, useState } from 'react';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useRouter } from 'next/router';
-import { WrapperSearchBox, InputBox, Button } from './styles';
+import { WrapperSearchBox, InputBox, Button, Search } from './styles';
 import AutoComplete from '../../../lib/AutoComplete';
 import DatePickerRange from '../../../lib/DatePickerRange';
 import InputGuests from '../../../lib/Guestinput';
@@ -20,7 +18,7 @@ const SearchBox = (): any => {
     e.preventDefault();
 
     setSearchFilters({
-      destination: destination,
+      destination,
       from: date.from,
       to: date.to,
       adults: guest.adults,
@@ -36,6 +34,7 @@ const SearchBox = (): any => {
         <AutoComplete
           name="Destino"
           message={null}
+          type="text"
           width="150"
           placeholder="Destino"
           disabled={false}
@@ -54,7 +53,7 @@ const SearchBox = (): any => {
       </InputBox>
       <InputBox>
         <Button type="submit" disabled={!destination}>
-          <FontAwesomeIcon icon={faSearch} />
+          <Search />
         </Button>
       </InputBox>
     </WrapperSearchBox>
