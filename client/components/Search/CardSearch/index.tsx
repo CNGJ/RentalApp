@@ -19,10 +19,11 @@ interface CardInfo {
   guests: number;
   features: Features;
   price: number;
+  onClick?: (e:any) => void;
 }
 
 const CardSearch = (cardInfo: CardInfo) => {
-  const { type, name, guests, features, price } = cardInfo;
+  const { type, name, guests, features, price, onClick } = cardInfo;
 
   useEffect(() => {
     console.log('cambio el card');
@@ -31,8 +32,10 @@ const CardSearch = (cardInfo: CardInfo) => {
   return (
     <>
       <WrapperCard
-        onClick={() => {
-          console.log('Ir al Detalle');
+        onClick={(e) => {
+          console.log('click en publicacion');
+          
+          onClick(e);
         }}
       >
         <Fav
