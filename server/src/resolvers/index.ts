@@ -70,13 +70,7 @@ const resolvers = {
         const { destination, from, to, kids, adults, pets } = input;
 
         const publications = await Publication.find({
-          $and: [
-            // destination ? {'location.province': destination} : { $not:{'location.province': destination}}
-            destination !== '' ? { 'location.province': destination } : { 'location.province': { $ne: 'trueValue' } },
-            { 'terms.adults': adults },
-            { 'terms.kids': kids },
-            { 'terms.pets': pets }
-          ]
+          'location.province': { $regex: `^${destination}$`, $options: 'i' }
         });
 
         console.log(publications);

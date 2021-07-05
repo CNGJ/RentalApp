@@ -1,11 +1,8 @@
 import React, { useState, useContext } from 'react';
-import { faUserAstronaut, faUserEdit } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useFormik } from 'formik';
 import { useMutation } from '@apollo/client';
 import Input from '../../../lib/Input';
-import { Subtitle, Title, FormWrapper, Button, ButtonContainer, LoginWrapper } from './styles';
-import theme from '../../../theme';
+import { Subtitle, Title, FormWrapper, Button, ButtonContainer, User, UserEdit } from './styles';
 import 'react-toastify/dist/ReactToastify.css';
 import { ValidationsLogin, ValidationsRegister } from './validations';
 import { NEW_USER, AUTHENTICATE } from '../../../gql/Users';
@@ -98,13 +95,13 @@ const Login = () => {
   });
 
   return (
-    <LoginWrapper>
+    <div>
       {!Usernew ? (
         <FormWrapper onSubmit={formikLogin.handleSubmit}>
           <Title>
             Inicia Sesion
             <span style={{ marginLeft: '1rem' }}>
-              <FontAwesomeIcon icon={faUserAstronaut} style={{ color: `${theme.Terciary}` }} />
+              <User />
             </span>
           </Title>
           <Input
@@ -143,7 +140,7 @@ const Login = () => {
           <Title>
             Crea tu cuenta
             <span style={{ marginLeft: '1rem' }}>
-              <FontAwesomeIcon icon={faUserEdit} style={{ color: `${theme.Terciary}` }} />
+              <UserEdit />
             </span>
           </Title>
           <Input
@@ -230,7 +227,7 @@ const Login = () => {
       >
         {!Usernew ? '¿No tienes cuenta? registrate aqui.' : '¿Ya tienes cuenta? Inicia sesion aqui. '}
       </Subtitle>
-    </LoginWrapper>
+    </div>
   );
 };
 

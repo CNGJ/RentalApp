@@ -1,15 +1,16 @@
 import styled from 'styled-components';
+import { UserIcon, HomeIcon, LogoutIcon, PlusSmIcon } from '@heroicons/react/outline';
 import theme from '../../../theme';
 
 export const WrapperHeader = styled.div<{ fixed: boolean }>`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   margin-bottom: 1rem;
   padding-bottom: 1rem;
   padding-top: 1rem;
   border-bottom: solid 0.1px ${theme.Terciary};
-  background: rgba(251, 247, 236, 0.2);
+  background: rgba(238, 242, 255, 0.2);
 
   ${props =>
     props.fixed &&
@@ -17,7 +18,7 @@ export const WrapperHeader = styled.div<{ fixed: boolean }>`
      top: 0;
      width: 100%;
      z-index: 2;
-     background: ${theme.Secondary};
+     background: rgba(238, 242, 255, 1);
      `}
 `;
 
@@ -25,7 +26,7 @@ export const Title = styled.div`
   font-family: ;
 `;
 
-export const Icon = styled.div`
+export const Icon = styled.div<{ tooltip?: any; logout?: boolean }>`
   padding-left: 0.8rem;
   padding-right: 0.8rem;
   padding-top: 0.4rem;
@@ -51,11 +52,26 @@ export const Icon = styled.div`
     text-align: center;
   }
   :hover {
-    background-color: ${theme.Terciary};
+    ${({ logout }) => (logout ? `background-color: ${theme.Red};` : `background-color: ${theme.Terciary};`)}
     color: white;
   }
 `;
 
 export const WrapperIcons = styled.div`
   display: flex;
+`;
+
+export const User = styled(UserIcon)`
+  width: 1.5rem;
+`;
+
+export const Home = styled(HomeIcon)`
+  width: 1.5rem;
+`;
+
+export const Logout = styled(LogoutIcon)`
+  width: 1.5rem;
+`;
+export const Collection = styled(PlusSmIcon)`
+  width: 1.5rem;
 `;

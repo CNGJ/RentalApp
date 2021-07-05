@@ -17,6 +17,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
+    "@heroicons/react": "^1.0.1",
     "apollo-link-context": "^1.0.20",
     "concurrently": "^6.2.0",
     "date-fns": "^2.21.3",

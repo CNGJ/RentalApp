@@ -12,7 +12,7 @@ interface Features {
   kitchen?: number;
 }
 
-//poner type como obligatorio
+// poner type como obligatorio
 interface CardInfo {
   type?: string;
   name: string;

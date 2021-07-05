@@ -3,6 +3,8 @@ import theme from '../../theme';
 
 export const WrapperInput = styled.div`
   position: relative;
+  margin-left: 1rem;
+  margin-right: 1rem;
 `;
 
 export const WrapperCounter = styled.div`

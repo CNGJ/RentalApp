@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import Header from '../components/Home/Header';
 import {
   HomeTitle,
@@ -14,12 +13,37 @@ import {
 import Boxtype from '../components/Home/Boxtype';
 import Card from '../components/Home/Cards';
 import CardImage from '../components/Home/CardImage';
-import { ContainerInfo, ImgInfo, Info, TitleInfo, WrapperInfo, WrapperTitle } from '../components/Home/styles';
+import {
+  Circle,
+  ContainerInfo,
+  ImgInfo,
+  Info,
+  Point,
+  TitleInfo,
+  Track,
+  TrackTwo,
+  WrapperInfo,
+  WrapperTitle
+} from '../components/Home/styles';
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default function Home() {
   return (
     <>
       <Header />
+
+      <Track>
+        <Circle>
+          <Point></Point>
+        </Circle>
+      </Track>
+
+      <TrackTwo>
+        <Circle>
+          <Point></Point>
+        </Circle>
+      </TrackTwo>
+
       <WrapperHome>
         <TitleContainer>
           <HomeTitle>

@@ -5,6 +5,7 @@ import PuffLoader from 'react-spinners/PuffLoader';
 import Modal from '../lib/Modal';
 import 'react-toastify/dist/ReactToastify.css';
 import theme from '../theme';
+import SideBar from '../lib/SideBar';
 
 export interface InfoModal {
   children?: JSX.Element;
@@ -24,11 +25,15 @@ export interface InfoModal {
 
 export interface ContextPropsModal {
   showModal: boolean;
-  showSpinner: boolean;
   setShowModal: (param: boolean) => void;
-  setshowSpinner: (param: boolean) => void;
-  infoModal?: InfoModal;
   setInfoModal: (param?: InfoModal) => void;
+  infoModal?: InfoModal;
+  showSide: boolean;
+  setShowSide: (param: boolean) => void;
+  infoSide?: InfoModal;
+  setInfoSide: (param?: InfoModal) => void;
+  showSpinner: boolean;
+  setshowSpinner: (param: boolean) => void;
   ToastError: (msg: string) => void;
   ToastSuccess: (msg: string) => void;
   ToastInfo: (msg: string) => void;
@@ -36,10 +41,14 @@ export interface ContextPropsModal {
 
 export const initialProps: ContextPropsModal = {
   showModal: false,
+  showSide: false,
   showSpinner: false,
   setShowModal: null,
+  setShowSide: null,
+  setInfoSide: null,
   setshowSpinner: null,
   infoModal: {},
+  infoSide: {},
   setInfoModal: null,
   ToastError: null,
   ToastSuccess: null,
@@ -65,7 +74,9 @@ const ModalContext = createContext(initialProps);
 
 const ModalProvider: FC = ({ children }) => {
   const [showModal, setShowModal] = useState(initialProps.showModal);
+  const [showSide, setShowSide] = useState(initialProps.showSide);
   const [infoModal, setInfoModal] = useState<InfoModal>(initialProps.infoModal);
+  const [infoSide, setInfoSide] = useState<InfoModal>(initialProps.infoSide);
   const [showSpinner, setshowSpinner] = useState(initialProps.showSpinner);
   // const [children, setchildren] = useState<JSX.Element>(null)
   const ToastError = (msg: string) =>
@@ -88,6 +99,9 @@ const ModalProvider: FC = ({ children }) => {
       value={{
         showModal,
         setShowModal,
+        setShowSide,
+        showSide,
+        setInfoSide,
         infoModal,
         setInfoModal,
         ToastError,
@@ -98,17 +112,12 @@ const ModalProvider: FC = ({ children }) => {
       }}
     >
       {children}
-      <Modal
-        // icon={infoModal?.icon}
-        show={showModal}
-        title={infoModal?.title}
-        setShowModal={setShowModal}
-        // onClose={() => setShowModal(false)}
-        // open={showModal}
-        // {...infoModal}
-      >
+      <Modal show={showModal} title={infoModal?.title} setShowModal={setShowModal}>
         {infoModal?.children || ''}
       </Modal>
+      <SideBar show={showSide} title={infoSide?.title} setShowModal={setShowSide}>
+        {infoSide?.children || ''}
+      </SideBar>
       {showSpinner && (
         <SpinnerContainer>
           <PuffLoader color={theme.Terciary} loading={showSpinner} size={100} />

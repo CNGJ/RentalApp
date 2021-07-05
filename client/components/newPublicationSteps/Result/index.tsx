@@ -1,6 +1,4 @@
 import React, { FC, useContext } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import {
   WrapperResult,
   HomeTitle,
@@ -9,9 +7,9 @@ import {
   LineDetail,
   PDetail,
   Button,
+  Check,
   ContainerButton
 } from './styles';
-import theme from '../../../theme';
 import { PublicationContext } from '../../../Context/PublicationContext';
 
 const FinalStepNewPublication: FC = () => {
@@ -23,7 +21,7 @@ const FinalStepNewPublication: FC = () => {
     <WrapperResult>
       <HomeTitle> Tu publicacion ha sido creada con exito </HomeTitle>
 
-      <FontAwesomeIcon icon={faCheck} style={{ color: `${theme.Green}` }} size="5x" />
+      <Check />
 
       <Subtitle> numero de publicacion: 15878422587 </Subtitle>
 
