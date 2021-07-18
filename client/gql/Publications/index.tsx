@@ -44,6 +44,7 @@ export const GET_PUBLICATIONS_SEARCH = gql`
         balcony
         kitchen
         yard
+        environments
       }
     }
   }
@@ -84,6 +85,7 @@ export const GET_PUBLICATIONS = gql`
         balcony
         kitchen
         yard
+        environments
       }
     }
   }

@@ -17,6 +17,7 @@ export interface ContextPropsProfile {
 export interface IPublication {
   id?: string;
   name: string;
+  description: string;
   location: ILocation;
   price: number;
   // owner: string;
@@ -66,6 +67,7 @@ export const initialProps: ContextPropsProfile = {
   setnewPublication: null,
   NewPublicationData: {
     name: '',
+    description: '',
     location: {
       street: '',
       number: 0,
