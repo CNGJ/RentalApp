@@ -69,10 +69,6 @@ const StepThreePublication = () => {
   useEffect(() => {
     const isValid = Object.values(formik.errors).length === 0 && formik.values !== formik.initialValues;
 
-    console.log('isValid', isValid);
-    console.log('2', Object.values(formik.errors).length);
-    console.log('3', formik.values);
-
     if (isValid) {
       const pepe = [...steps];
       pepe[2].disabled = false;
@@ -105,7 +101,7 @@ const StepThreePublication = () => {
                 ? { text: formik.errors.price.toString(), type: 'error' }
                 : null
             }
-            width={'350'}
+            width={'50%'}
             type="number"
             marginB={'0'}
             placeholder={'Precio por noche'}

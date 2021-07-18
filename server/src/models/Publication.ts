@@ -11,16 +11,21 @@ interface ITerms {
   sex: string;
   pets: number;
 }
-interface IFeatures {
-  toilets: number;
-  bedrooms: number;
-  Beds: number;
-  bunkBeds: number;
-  environments: number;
-  kitchen: number;
-  pool: number;
-  balcony: number;
-  yard: number;
+// interface IFeatures {
+//   toilets: number;
+//   bedrooms: number;
+//   Beds: number;
+//   bunkBeds: number;
+//   environments: number;
+//   kitchen: number;
+//   pool: number;
+//   balcony: number;
+//   yard: number;
+// }
+
+interface IFeatures extends mongoose.Document {
+  name: string;
+  amount: number;
 }
 interface ILocation {
   street: string;
@@ -42,15 +47,8 @@ const TermsSchema = new Schema({
   pets: Number
 });
 const FeaturesSchema = new Schema({
-  toilets: Number,
-  bedrooms: Number,
-  Beds: Number,
-  bunkBeds: Number,
-  environments: Number,
-  kitchen: Number,
-  pool: Number,
-  balcony: Number,
-  yard: Number
+  name: String,
+  amount: Number
 });
 
 export interface Publication extends mongoose.Document {
@@ -64,7 +62,7 @@ export interface Publication extends mongoose.Document {
   description: string;
   terms: ITerms;
   rules: Types.Array<string>;
-  features: IFeatures;
+  features: [typeof FeaturesSchema];
 }
 
 const PublicationSchema = new Schema({
@@ -111,7 +109,7 @@ const PublicationSchema = new Schema({
     required: true
   },
   features: {
-    type: FeaturesSchema,
+    type: [FeaturesSchema],
     required: true
   },
   guests: [

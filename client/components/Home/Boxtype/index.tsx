@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { WrapperBoxType, ContainerTypes, Icon, Link, Building, Home, Room, Cabana, Campo } from './style';
 
@@ -10,7 +10,7 @@ const options = [
   { label: 'Campo', icon: <Campo /> }
 ];
 
-const Boxtype = () => {
+const Boxtype: FC<any> = () => {
   return (
     <WrapperBoxType>
       <ContainerTypes>

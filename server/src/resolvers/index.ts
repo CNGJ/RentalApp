@@ -138,12 +138,11 @@ const resolvers = {
       const owner = ctx.user.id;
       console.log('owner', owner);
       input.owner = owner;
-
       console.log('input', input);
 
       try {
         const publication = new Publication(input);
-        publication.save();
+        await publication.save();
         return publication;
       } catch (error) {
         console.log(error);

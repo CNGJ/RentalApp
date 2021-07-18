@@ -1,6 +1,7 @@
 import { useFormik } from 'formik';
 // import { v4 as uuidv4 } from 'uuid';
 import React, { useEffect, useContext } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { DataContainer, Title, WrapperCounters, WrapperFeatures } from './styles';
 import ValidationsData from './validations';
 import { PublicationContext } from '../../../Context/PublicationContext';
@@ -68,10 +69,20 @@ const StepTwoPublication = () => {
 
     setnewPublication(prev => ({
       ...prev,
-      features: { bedrooms, toilets, environments, kitchen },
+      features: [
+        { name: 'bedrooms', amount: bedrooms },
+        { name: 'toilets', amount: toilets },
+        { name: 'kitchen', amount: kitchen },
+        { name: 'environments', amount: environments }
+      ],
       services: filterService
     }));
   }, [formik.values]);
+
+  const features = [
+    { labelOne: 'Ambientes', nameOne: 'environments', labelTwo: 'Habitaciones', nameTwo: 'bedrooms' },
+    { labelOne: 'Baños', nameOne: 'toilets', labelTwo: 'Cocinas', nameTwo: 'kitchen' }
+  ];
 
   return (
     <>
@@ -87,32 +98,26 @@ const StepTwoPublication = () => {
 
         <WrapperFeatures>
           <Title>Caracteristicas de tu alojamiento</Title>
-          <WrapperCounters>
-            <Counter
-              label={'Ambientes'}
-              name={'environments'}
-              disabled={formik.values.environments - 1 === 0}
-              value={formik.values.environments}
-              onChange={formik.setFieldValue}
-            />
-            <Counter
-              label={'Habitaciones'}
-              name={'bedrooms'}
-              disabled={formik.values.bedrooms - 1 === 0}
-              value={formik.values.bedrooms}
-              onChange={formik.setFieldValue}
-            />
-          </WrapperCounters>
-          <WrapperCounters>
-            <Counter
-              label={'Baños'}
-              name={'toilets'}
-              disabled={formik.values.toilets - 1 === 0}
-              value={formik.values.toilets}
-              onChange={formik.setFieldValue}
-            />
-            <Counter label={'Cocinas'} name={'kitchen'} value={formik.values.kitchen} onChange={formik.setFieldValue} />
-          </WrapperCounters>
+          {features.map((e, i) => {
+            return (
+              <WrapperCounters key={uuidv4()}>
+                <Counter
+                  label={e.labelOne}
+                  name={e.nameOne}
+                  disabled={formik.values[e.nameOne] - 1 === 0}
+                  value={formik.values[e.nameOne]}
+                  onChange={formik.setFieldValue}
+                />
+                <Counter
+                  label={e.labelTwo}
+                  name={e.labelTwo}
+                  disabled={formik.values[e.nameTwo] - 1 === 0}
+                  value={formik.values[e.nameTwo]}
+                  onChange={formik.setFieldValue}
+                />
+              </WrapperCounters>
+            );
+          })}
         </WrapperFeatures>
       </DataContainer>
     </>

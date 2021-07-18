@@ -21,15 +21,8 @@ const types = gql`
   }
 
   type Features {
-    toilets: Int
-    bedrooms: Int
-    Beds: Int
-    bunkBeds: Int
-    environments: Int
-    kitchen: Int
-    pool: Int
-    balcony: Int
-    yard: Int
+    name: featuType
+    amount: Int
   }
 
   type ILocation {
@@ -51,7 +44,7 @@ const types = gql`
     description: String
     terms: Terms
     rules: [String]
-    features: Features
+    features: [Features]
   }
 
   type Token {

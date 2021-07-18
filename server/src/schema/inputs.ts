@@ -21,17 +21,22 @@ const inputs = gql`
     sex: SexInput
     pets: Int
   }
+  
+  enum featuType {
+    toilets
+    bedrooms
+    beds
+    bunkBeds
+    environments
+    kitchen
+    pool
+    balcony
+    yard
+  }
 
   input featuresInput {
-    toilets: Int!
-    bedrooms: Int!
-    Beds: Int
-    bunkBeds: Int
-    environments: Int!
-    kitchen: Int!
-    pool: Int
-    balcony: Int
-    yard: Int
+    name: featuType!
+    amount: Int!    
   }
 
   enum SexInput {
@@ -56,7 +61,7 @@ const inputs = gql`
     description: String
     terms: termsInput!
     rules: [String]
-    features: featuresInput
+    features: [featuresInput]
   }
 
   input newGuestInput {

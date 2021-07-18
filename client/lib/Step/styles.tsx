@@ -17,7 +17,22 @@ export const StepContainer = styled.div`
   height: 50vh;
   background: #ffff;
   box-shadow: -5px 8px 8px -6px black;
-  margin-top: 4rem;
+  overflow-y: scroll;
+  margin-top: 3rem;
+
+  ::-webkit-scrollbar {
+    width: 10px; /* width of the entire scrollbar */
+  }
+
+  ::-webkit-scrollbar-track {
+    background: ${theme.Gray_Opcity}; /* color of the tracking area */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: ${theme.Terciary_Op}; /* color of the scroll thumb */
+    border-radius: 20px; /* roundness of the scroll thumb */
+    border: 3px solid ${theme.Terciary_Op}; /* creates padding around scroll thumb */
+  }
 
   @media (max-width: 1600px) {
     height: 75vh;
