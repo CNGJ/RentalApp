@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { UserIcon, HomeIcon, LogoutIcon, PlusSmIcon } from '@heroicons/react/outline';
+import { UserIcon, HomeIcon, LogoutIcon, FolderAddIcon, HeartIcon } from '@heroicons/react/outline';
 import theme from '../../../theme';
 
 export const WrapperHeader = styled.div<{ fixed: boolean }>`
@@ -45,8 +45,6 @@ export const Icon = styled.div<{ tooltip?: any; logout?: boolean }>`
     font-weight: 350;
     color: ${theme.Terciary};
     margin-top: 5px;
-    // background: ${theme.White};
-    // border: 1px solid ${theme.Terciary};
     border-radius: 0.3rem;
     padding: 0.2rem;
     text-align: center;
@@ -67,11 +65,16 @@ export const User = styled(UserIcon)`
 
 export const Home = styled(HomeIcon)`
   width: 1.5rem;
+  cursor: pointer;
 `;
 
 export const Logout = styled(LogoutIcon)`
   width: 1.5rem;
 `;
-export const Collection = styled(PlusSmIcon)`
+export const Collection = styled(FolderAddIcon)`
+  width: 1.5rem;
+`;
+
+export const Heart = styled(HeartIcon)`
   width: 1.5rem;
 `;

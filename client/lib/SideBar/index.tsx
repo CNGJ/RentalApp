@@ -21,7 +21,7 @@ const SideBar: FC<any> = ({ children, show, title, setShowModal }) => {
       <Backdrop show={state} clicked={SideClosed}></Backdrop>
       <SideWrapper
         style={{
-          transform: state ? 'translateY(0)' : 'translateY(-100vh)',
+          transform: state ? 'translateX(0)' : 'translateX(100vw)',
           opacity: state ? 1 : 0
         }}
       >
