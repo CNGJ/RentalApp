@@ -24,10 +24,10 @@ export default styled.input`
 `;
 
 export const InputContainer = styled.div<{
-  disabled;
-  placeholder;
-  hasValue;
-  width;
+  disabled?;
+  placeholder?;
+  hasValue?;
+  width?;
 }>`
   background-color: ${({ disabled }) => (disabled ? '#dadada' : '#ffffff')};
   pointer-events: ${({ disabled }) => (disabled ? 'none' : '')};

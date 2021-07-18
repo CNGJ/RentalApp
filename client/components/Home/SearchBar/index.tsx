@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, FC } from 'react';
 import { useRouter } from 'next/router';
 import { WrapperSearchBox, InputBox, Button, Search } from './styles';
 import AutoComplete from '../../../lib/AutoComplete';
@@ -6,7 +6,7 @@ import DatePickerRange from '../../../lib/DatePickerRange';
 import InputGuests from '../../../lib/Guestinput';
 import { PublicationContext } from '../../../Context/PublicationContext';
 
-const SearchBox = (): any => {
+const SearchBox: FC<any> = () => {
   const [destination, setdestination] = useState(null);
   const [date, setDate] = useState({ from: undefined, to: undefined });
   const [guest, setguest] = useState({ adults: 0, kids: 0, pets: 0 });

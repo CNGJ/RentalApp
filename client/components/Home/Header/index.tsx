@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useContext, FC, useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/router';
-import { Icon, WrapperHeader, WrapperIcons, User, Home, Logout, Collection } from './styles';
+import { Icon, WrapperHeader, WrapperIcons, User, Home, Logout, Collection, Heart } from './styles';
 import { ModalContext } from '../../../Context/ModalContext';
 import { ProfileContext } from '../../../Context/ProfileContext';
 import SearchBar from '../SearchBar';
@@ -39,7 +39,8 @@ const Header: FC<IHeaderProps> = ({ fixed }) => {
 
   const handleProfile = () => {
     if (profile) {
-      setProfileMenu(!showProfileMenu);
+      // setProfileMenu(!showProfileMenu);
+      router.push('/profile');
     } else {
       setShowModal(!showModal);
       setInfoModal({
@@ -79,6 +80,9 @@ const Header: FC<IHeaderProps> = ({ fixed }) => {
             <>
               <Icon onClick={handleNewPublication}>
                 <Collection />
+              </Icon>
+              <Icon>
+                <Heart />
               </Icon>
               <Icon onClick={logOut} logout>
                 <Logout />

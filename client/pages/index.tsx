@@ -32,17 +32,17 @@ export default function Home() {
     <>
       <Header />
 
-      <Track>
+      {/* <Track>
         <Circle>
           <Point></Point>
         </Circle>
-      </Track>
+      </Track> */}
 
-      <TrackTwo>
+      {/* <TrackTwo>
         <Circle>
           <Point></Point>
         </Circle>
-      </TrackTwo>
+      </TrackTwo> */}
 
       <WrapperHome>
         <TitleContainer>
@@ -52,11 +52,11 @@ export default function Home() {
         </TitleContainer>
       </WrapperHome>
       <WrapperHome column>
-        <SubTitle bold opacity>
+        {/* <SubTitle bold opacity>
           Gana dinero con ese espacio que no utilizas, hazte dueño.
-        </SubTitle>
+        </SubTitle> */}
       </WrapperHome>
-      <WrapperType imgUrl={'/city-silueta.jpg'}>
+      <WrapperType>
         <Boxtype />
       </WrapperType>
       <WrapperTitle>
@@ -98,12 +98,12 @@ export default function Home() {
           </Info>
         </ContainerInfo>
       </WrapperInfo>
-      <WrapperCards>
+      {/* <WrapperCards>
         <Card />
         <Card />
         <Card />
         <Card />
-      </WrapperCards>
+      </WrapperCards> */}
     </>
   );
 }

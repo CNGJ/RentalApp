@@ -30,13 +30,13 @@ export default styled.input`
 `;
 
 export const InputContainer = styled.div<{
-  disabled;
-  placeholder;
-  hasValue;
-  width;
-  marginB;
-  marginR;
-  marginL;
+  disabled?;
+  placeholder?;
+  hasValue?;
+  width?;
+  marginB?;
+  marginR?;
+  marginL?;
 }>`
   background-color: ${({ disabled }) => (disabled ? '#dadada' : '#ffffff')};
   pointer-events: ${({ disabled }) => (disabled ? 'none' : '')};

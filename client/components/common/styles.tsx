@@ -3,7 +3,7 @@ import theme from '../../theme';
 
 export const HomeTitle = styled.h1`
   font-size: 2rem;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.1;
   margin: 1rem auto;
   color: ${theme.Primary};
@@ -16,7 +16,7 @@ export const HomeTitle = styled.h1`
 
 export const SpanTitle = styled.span`
   font-size: 2rem;
-  font-weight: 500;
+  font-weight: 300;
   line-height: 1.1;
   margin: 1rem auto;
   color: ${theme.Terciary};
@@ -61,11 +61,10 @@ export const WrapperType = styled.div<{ imgUrl?: any }>`
   flex-direction: column;
   align-items: center;
   margin-top: 2rem;
-  background-size: contain;
-  background: url(${props => props.imgUrl});
-  // background: #FFD581;
+  background: ${theme.Terciary};
   padding-bottom: 0rem;
-  padding-top: 10rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 `;
 
 export const WrapperCards = styled.div`

@@ -9,8 +9,6 @@ export const WrapperFilters = styled.div`
 `;
 
 export const Filter = styled.div`
-  border: 1px solid ${theme.Gray};
-  // background: ${theme.Secondary};
   width: 4rem;
   display: flex;
   padding: 0.5rem;
@@ -31,10 +29,8 @@ export const IconFilter = styled(FilterIcon)`
   width: 1.5rem;
 `;
 
-export const FilterTitle = styled.p<{ small?: any }>`
+export const FilterTitle = styled.p`
   margin: 0;
-  ${({ small }) => {
-    // eslint-disable-next-line no-unused-expressions
-    small && 'font-size: 10px;';
-  }}
+  font-size: 1rem;
+  font-weight: 300;
 `;

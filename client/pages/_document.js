@@ -18,11 +18,13 @@ export default class MyDocument extends Document {
     return { ...page, styleTags };
   }
 
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   render() {
     return (
       <Html>
         <Head>
           <link rel="stylesheet" href="https://unpkg.com/react-day-picker/lib/style.css" />
+          <title>Rental App</title>
           {/* Step 5: Output the styles in the head  */}
           {this.props.styleTags}
         </Head>

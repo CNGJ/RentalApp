@@ -15,7 +15,7 @@ export const ContainerTypes = styled.div`
 `;
 
 export const Icon = styled.div<{ isLast: boolean }>`
-  padding: 0.5rem;
+  padding: 1.5rem;
   cursor: pointer;
   color: ${({ isLast }) => (isLast ? theme.White : theme.Gray_font)};
   background-color: ${({ isLast }) => (isLast ? theme.Gray_font : theme.White)};
@@ -30,11 +30,11 @@ export const Icon = styled.div<{ isLast: boolean }>`
   justify-content: center;
 
   :hover {
-    color: ${theme.Terciary};
-    transform: translateY(-5%);
+    color: black;
+    transform: translateY(-9%);
   }
 
-  transition: all 0.1s ease-in-out;
+  transition: all 0.2s ease-in-out;
 `;
 
 export const Link = styled.div<{ placeholder?: string }>`
