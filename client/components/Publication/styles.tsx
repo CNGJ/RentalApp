@@ -13,6 +13,14 @@ export const WrapperCard = styled.div`
   padding-bottom: 0.5rem;
   background: ${theme.White};
   position: relative;
-  cursor: pointer;
+  height: fit-content;
   box-shadow: 0px 4px 10px -4px black;
+`;
+
+export const WrapperMap = styled.div<{ imgUrl: any }>`
+  flex: 1;
+  border-radius: 1rem;
+  background: black;
+  margin-right: 3%;
+  background: url(${props => props.imgUrl});
 `;

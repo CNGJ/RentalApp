@@ -36,15 +36,8 @@ export const GET_PUBLICATIONS_SEARCH = gql`
       }
       rules
       features {
-        toilets
-        bedrooms
-        Beds
-        bunkBeds
-        pool
-        balcony
-        kitchen
-        yard
-        environments
+        name
+        amount
       }
     }
   }

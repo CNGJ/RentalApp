@@ -30,8 +30,6 @@ const ProfileProvider: FC = ({ children }) => {
   const { data, error, loading, refetch } = useQuery(GET_USER);
 
   useEffect(() => {
-    console.log(data, 'data');
-
     if (data) {
       if (data.getUser) {
         const { id, name, lastname, email, phone } = data.getUser;

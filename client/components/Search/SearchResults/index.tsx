@@ -18,9 +18,8 @@ const SearchResults: FC = () => {
   // pets cuenta como guest?
   const getTotalGuests = ({ terms }: IPublication) => terms.adults + terms.kids + terms.pets;
 
-  const handleClick = (e:any, {id}: IPublication) => {
-    e.preventDefault()
-    console.log('cambio de pantalla');
+  const handleClick = (e: any, { id }: IPublication) => {
+    e.preventDefault();
     router.push(`/publication/${id}`);
   };
 
@@ -35,14 +34,14 @@ const SearchResults: FC = () => {
           ) : (
             <>
               {searchPublications.map((pb, i) => (
-                  <CardSearch
-                    key={i}
-                    name={pb.name}
-                    features={pb.features}
-                    price={pb.price}
-                    guests={getTotalGuests(pb)}
-                    onClick={(e) => handleClick(e, pb)}
-                  />
+                <CardSearch
+                  key={i}
+                  name={pb.name}
+                  features={pb.features}
+                  price={pb.price}
+                  guests={getTotalGuests(pb)}
+                  onClick={e => handleClick(e, pb)}
+                />
               ))}
             </>
           )}

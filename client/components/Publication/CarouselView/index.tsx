@@ -4,7 +4,7 @@ import { Carousel } from 'react-responsive-carousel';
 
 const CarouselView: FC = () => {
   return (
-    <div style={{ flex: 2, marginRight: '5%', maxHeight: '600px', maxWidth: '800px' }}>
+    <div style={{ maxHeight: 'fit-content', maxWidth: '800px' }}>
       <Carousel showArrows={true} dynamicHeight={false}>
         <div>
           <img src="https://tecnohotelnews.com/wp-content/uploads/2020/07/image004-2.jpg" alt="" />

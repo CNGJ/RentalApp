@@ -11,8 +11,6 @@ interface Props {
 // TODO: sacar el score opcional y el numero por default. era solo para prueba. definirlo en la base
 
 const Title = ({ title, score = 5 }: Props) => {
-  console.log('Title component', title, score);
-
   const getStars = () => {
     const stars = [];
 
@@ -20,8 +18,6 @@ const Title = ({ title, score = 5 }: Props) => {
     for (let index = 0; index < score; index++) {
       stars.push(<FontAwesomeIcon key={index} icon={faStar} size="xs" />);
     }
-
-    console.log(stars);
 
     return stars;
   };
