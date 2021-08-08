@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React from 'react';
 import Header from '../components/Home/Header';
 import {
@@ -26,8 +27,27 @@ import {
   WrapperTitle
 } from '../components/Home/styles';
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+import StyledLabel from '../lib/StyledLabel';
+import i18n from '../lib/i18n';
+
 export default function Home() {
+  const namespace = 'ui-home';
+  const title = {
+    text: {
+      text: 'Busquemos tu proximo alojamiento {componentText}',
+      color: 'BLACK',
+      font_size: 'MEDIUM',
+      font_family: 'REGULAR',
+      values: {
+        componentText: {
+          text: 'juntos',
+          color: 'GREEN',
+          font_size: 'MEDIUM',
+          font_family: 'REGULAR'
+        }
+      }
+    }
+  };
   return (
     <>
       <Header />
@@ -46,9 +66,16 @@ export default function Home() {
 
       <WrapperHome>
         <TitleContainer>
-          <HomeTitle>
-            Busquemos tu proximo alojamiento <SpanTitle>juntos</SpanTitle>.
-          </HomeTitle>
+          <StyledLabel
+            className={`${namespace}__title`}
+            as="p"
+            fontFamily="REGULAR"
+            fontSize="XSMALL"
+            color="RED"
+            text="Busquemos tu proximo alojamiento"
+            // TODO terminar esto para que pueda dibujar 2 label en un mismo text
+            // text={i18n.jsx("{Busquemos tu proximo alojamiento {componentText}", title.text.values)}
+          />
         </TitleContainer>
       </WrapperHome>
       <WrapperHome column>
