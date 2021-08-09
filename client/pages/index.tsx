@@ -28,26 +28,8 @@ import {
 } from '../components/Home/styles';
 
 import StyledLabel from '../lib/StyledLabel';
-import i18n from '../lib/i18n';
 
 export default function Home() {
-  const namespace = 'ui-home';
-  const title = {
-    text: {
-      text: 'Busquemos tu proximo alojamiento {componentText}',
-      color: 'BLACK',
-      font_size: 'MEDIUM',
-      font_family: 'REGULAR',
-      values: {
-        componentText: {
-          text: 'juntos',
-          color: 'GREEN',
-          font_size: 'MEDIUM',
-          font_family: 'REGULAR'
-        }
-      }
-    }
-  };
   return (
     <>
       <Header />
@@ -67,14 +49,11 @@ export default function Home() {
       <WrapperHome>
         <TitleContainer>
           <StyledLabel
-            className={`${namespace}__title`}
             as="p"
-            fontFamily="REGULAR"
-            fontSize="XSMALL"
-            color="RED"
-            text="Busquemos tu proximo alojamiento"
-            // TODO terminar esto para que pueda dibujar 2 label en un mismo text
-            // text={i18n.jsx("{Busquemos tu proximo alojamiento {componentText}", title.text.values)}
+            primaryText="Busquemos tu proximo alojamiento"
+            primaryValues={{ fontFamily: 'regular', fontSize: 'XSMALL', color: 'gray' }}
+            secundaryText="juntos"
+            secundaryValues={{ color: 'green', fontSize: '1rem' }}
           />
         </TitleContainer>
       </WrapperHome>
