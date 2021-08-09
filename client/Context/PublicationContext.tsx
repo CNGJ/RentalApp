@@ -17,20 +17,19 @@ export interface ContextPropsProfile {
 export interface IPublication {
   id?: string;
   name: string;
+  description: string;
   location: ILocation;
   price: number;
   // owner: string;
   services: string[];
   terms: ITerms;
   rules: string[];
-  features: IFeatures;
+  features: IFeatures[];
 }
 
 export interface IFeatures {
-  toilets: number;
-  bedrooms: number;
-  environments: number;
-  kitchen: number;
+  name: string;
+  amount: number;
 }
 
 export interface ILocation {
@@ -66,6 +65,7 @@ export const initialProps: ContextPropsProfile = {
   setnewPublication: null,
   NewPublicationData: {
     name: '',
+    description: '',
     location: {
       street: '',
       number: 0,
@@ -80,12 +80,7 @@ export const initialProps: ContextPropsProfile = {
       pets: 0,
       sex: 'Ambos'
     },
-    features: {
-      bedrooms: 1,
-      environments: 1,
-      toilets: 1,
-      kitchen: 0
-    },
+    features: [],
     rules: []
   },
   searchPublications: [],

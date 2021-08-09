@@ -3,26 +3,20 @@ import { faBed, faDoorClosed, faStar, faUser, faUsers, faBath } from '@fortaweso
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { WrapperCard, Title, Fav, ImgCard, Type, WrapperIcons, SpanIcons, WrapIconSpan, Price, Score } from './styles';
-
-// esta bien que sean opcionales? puede pasar que no haya cocina?
-interface Features {
-  toilets?: number;
-  bedrooms?: number;
-  environments?: number;
-  kitchen?: number;
-}
+import { IFeatures } from '../../../Context/PublicationContext';
 
 // poner type como obligatorio
 interface CardInfo {
   type?: string;
   name: string;
   guests: number;
-  features: Features;
+  features: IFeatures[];
   price: number;
+  onClick?: (e: any) => void;
 }
 
 const CardSearch = (cardInfo: CardInfo) => {
-  const { type, name, guests, features, price } = cardInfo;
+  const { type, name, guests, features, price, onClick } = cardInfo;
 
   useEffect(() => {
     console.log('cambio el card');
@@ -31,8 +25,10 @@ const CardSearch = (cardInfo: CardInfo) => {
   return (
     <>
       <WrapperCard
-        onClick={() => {
-          console.log('Ir al Detalle');
+        onClick={e => {
+          console.log('click en publicacion');
+
+          onClick(e);
         }}
       >
         <Fav
@@ -52,7 +48,7 @@ const CardSearch = (cardInfo: CardInfo) => {
               <FontAwesomeIcon icon={faUsers} size="lg" />
             </WrapIconSpan>
             {/* bedrooms son habitaciones, como diferenciamos las camas? */}
-            <WrapIconSpan tooltip={'Camas'}>
+            {/* <WrapIconSpan tooltip={'Camas'}>
               <SpanIcons>{features.bedrooms}</SpanIcons>
               <FontAwesomeIcon icon={faBed} size="lg" />
             </WrapIconSpan>
@@ -63,7 +59,7 @@ const CardSearch = (cardInfo: CardInfo) => {
             <WrapIconSpan tooltip={'Baños'}>
               <SpanIcons>{features.toilets}</SpanIcons>
               <FontAwesomeIcon icon={faBath} size="lg" />
-            </WrapIconSpan>
+            </WrapIconSpan> */}
           </WrapperIcons>
           <Score>
             <FontAwesomeIcon icon={faStar} size="xs" />
