@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React from 'react';
 import Header from '../components/Home/Header';
 import {
@@ -26,7 +27,8 @@ import {
   WrapperTitle
 } from '../components/Home/styles';
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+import StyledLabel from '../lib/StyledLabel';
+
 export default function Home() {
   return (
     <>
@@ -46,9 +48,13 @@ export default function Home() {
 
       <WrapperHome>
         <TitleContainer>
-          <HomeTitle>
-            Busquemos tu proximo alojamiento <SpanTitle>juntos</SpanTitle>.
-          </HomeTitle>
+          <StyledLabel
+            as="p"
+            primaryText="Busquemos tu proximo alojamiento"
+            primaryValues={{ fontFamily: 'regular', fontSize: '1rem', color: 'gray' }}
+            secundaryText="juntos"
+            secundaryValues={{ color: 'green', fontSize: '1rem' }}
+          />
         </TitleContainer>
       </WrapperHome>
       <WrapperHome column>
