@@ -51,7 +51,7 @@ export default function Home() {
           <StyledLabel
             as="p"
             primaryText="Busquemos tu proximo alojamiento"
-            primaryValues={{ fontFamily: 'regular', fontSize: 'XSMALL', color: 'gray' }}
+            primaryValues={{ fontFamily: 'regular', fontSize: '1rem', color: 'gray' }}
             secundaryText="juntos"
             secundaryValues={{ color: 'green', fontSize: '1rem' }}
           />
