@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { UserIcon, PencilAltIcon } from '@heroicons/react/outline';
 import theme from '../../theme';
 
 export const Subtitle = styled.p`
@@ -10,25 +9,9 @@ export const Subtitle = styled.p`
   cursor: pointer;
 `;
 
-export const Title = styled.p``;
-
 export const FormWrapper = styled.form`
   padding: 2rem;
   min-width: 31rem;
-`;
-
-export const Button = styled.button`
-  justify-content: center;
-  width: 100%;
-  padding: 0.8rem;
-  border: none;
-  border-radius: 2rem;
-  margin-top: 1rem;
-  background: ${theme.Terciary};
-  font-size: 15px;
-  color: ${theme.White};
-  cursor: pointer;
-  font-weight: 400;
 `;
 
 export const ButtonContainer = styled.div`
@@ -38,12 +21,4 @@ export const ButtonContainer = styled.div`
 
 export const Separator = styled.div`
   border-top: 3px dotted #bbb;
-`;
-
-export const User = styled(UserIcon)`
-  width: 1.5rem;
-`;
-
-export const UserEdit = styled(PencilAltIcon)`
-  width: 1.5rem;
 `;
