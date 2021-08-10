@@ -83,3 +83,37 @@ export const GET_PUBLICATIONS = gql`
     }
   }
 `;
+
+export const GET_PUBLICATION_BY_ID = gql`
+  query getPublication($input: ID!) {
+    getPublication(id: $input) {
+      id
+      name
+      location {
+        street
+        number
+        location
+        province
+      }
+      price
+      owner
+      guests {
+        guest
+      }
+      created
+      services
+      description
+      terms {
+        adults
+        kids
+        pets
+        sex
+      }
+      rules
+      features {
+        name
+        amount
+      }
+    }
+  }
+`;
