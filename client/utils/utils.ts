@@ -5,6 +5,4 @@ const countNights = (from: any, to: any): number => {
   return diffDays;
 };
 
-export default {
-  countNights
-};
+export { countNights };

@@ -1,22 +1,25 @@
 import { useRouter } from 'next/router';
 import React, { FC, useContext, useEffect, useState } from 'react';
+import { useLazyQuery } from '@apollo/client';
 import { PublicationContext, IPublication } from '../../Context/PublicationContext';
 import { WrapperCard, WrapperMap } from './styles';
 import CarouselView from './CarouselView';
 import InfoCard from './InfoCard/index';
-import { useLazyQuery } from '@apollo/client';
 import { GET_PUBLICATION_BY_ID } from '../../gql/Publications';
+import { ModalContext } from '../../Context/ModalContext';
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 const PublicationView: FC = () => {
   const { searchPublications } = useContext(PublicationContext);
+  const { setshowSpinner } = useContext(ModalContext);
   const [publication, setPublication] = useState(undefined as IPublication);
-  const [getPublication, { loading, data }] = useLazyQuery(GET_PUBLICATION_BY_ID);
+  const [getPublication, { data }] = useLazyQuery(GET_PUBLICATION_BY_ID);
   const router = useRouter();
 
   useEffect(() => {
     if (router.query) {
+      setshowSpinner(true);
       const id = router.query.params;
 
       if (searchPublications.length !== 0) {
@@ -31,11 +34,14 @@ const PublicationView: FC = () => {
 
   useEffect(() => {
     if (data) {
-      console.log(data.getPublication);
-      const publication = data.getPublication;
-      setPublication(publication);
+      const searchedPublication = data.getPublication;
+      setPublication(searchedPublication);
     }
   }, [data]);
+
+  useEffect(() => {
+    if (publication) setshowSpinner(false);
+  }, [publication]);
 
   return (
     <div style={{ marginTop: '7rem', marginBottom: '10%' }}>
