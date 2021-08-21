@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { PublicationContext } from '../../../../Context/PublicationContext';
 import Calendar from '../../../../lib/Calendar';
 import DatePickerRange from '../../../../lib/DatePickerRange';
 import { countNights } from '../../../../utils/utils';
@@ -8,11 +9,13 @@ interface Props {
 }
 
 const Reservation = ({ price }: Props) => {
+  const { reservation, setReservation } = useContext(PublicationContext);
   const initialDateRange = { from: undefined, to: undefined };
   const [date, setDate] = useState(initialDateRange);
   const [totalNights, setTotalNights] = useState(0);
   const [guestsCounter, setGuestsCounter] = useState(0);
   const [totalBill, setTotalBill] = useState(0);
+  const [disableReservation, setDisableReservation] = useState(true);
 
   useEffect(() => {
     setTotalBill(guestsCounter * price * totalNights);
@@ -31,8 +34,11 @@ const Reservation = ({ price }: Props) => {
     }
   }, [date]);
 
+  useEffect(() => {
+    setDisableReservation(totalBill === 0);
+  }, [totalBill]);
+
   //VER TEMA DE FORMATOS DE PLATA
-  //AGREGAR COMPORTAMIENTO DEL TOTAL CUANDO SE SUMAN DIAS Y/O PERSONAS
   //VER ESTILOS DE BOTONES
 
   const handleAddGuest = () => {
@@ -41,6 +47,17 @@ const Reservation = ({ price }: Props) => {
 
   const handleSubstractGuest = () => {
     if (guestsCounter > 0) setGuestsCounter(guestsCounter - 1);
+  };
+
+  const handleReservation = () => {
+    const data = {
+      from: date.from,
+      to: date.to,
+      price: totalBill,
+      guests: guestsCounter
+    };
+    console.log(reservation.publication, data);
+    setReservation({ ...reservation, data });
   };
 
   return (
@@ -63,7 +80,9 @@ const Reservation = ({ price }: Props) => {
         <div style={{ display: 'flex', flexDirection: 'row' }}>
           <div style={{ flex: 1 }}>${totalBill}</div>
           <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', marginRight: '5%' }}>
-            <button>Reservar</button>
+            <button disabled={disableReservation} onClick={handleReservation}>
+              Reservar
+            </button>
           </div>
         </div>
       </div>

@@ -12,6 +12,8 @@ export interface ContextPropsProfile {
   setSearchPublications: (publications: IPublication[]) => void;
   setSearchFilters: (filters: ISearchFilters) => void;
   isLoading: boolean;
+  reservation: IReservation;
+  setReservation: (reservation: IReservation) => void;
 }
 
 export interface IPublication {
@@ -55,6 +57,18 @@ export interface ISearchFilters {
   pets: number;
 }
 
+export interface IReservationData {
+  from: Date;
+  to: Date;
+  price: number;
+  guests: number;
+}
+
+export interface IReservation {
+  publication: IPublication;
+  data: IReservationData;
+}
+
 export const initialProps: ContextPropsProfile = {
   steps: [
     { key: 1, disabled: true },
@@ -94,7 +108,36 @@ export const initialProps: ContextPropsProfile = {
   },
   setSearchPublications: null,
   setSearchFilters: null,
-  isLoading: false
+  isLoading: false,
+  reservation: {
+    publication: {
+      name: '',
+      description: '',
+      location: {
+        street: '',
+        number: 0,
+        location: '',
+        province: ''
+      },
+      price: 0,
+      services: [],
+      terms: {
+        adults: 1,
+        kids: 0,
+        pets: 0,
+        sex: 'Ambos'
+      },
+      features: [],
+      rules: []
+    },
+    data: {
+      from: null,
+      to: null,
+      guests: 0,
+      price: 0
+    }
+  },
+  setReservation: null
 };
 
 const PublicationContext = createContext(initialProps);
@@ -105,6 +148,7 @@ const PublicationProvider: FC = ({ children }) => {
   const [searchPublications, setSearchPublications] = useState(initialProps.searchPublications);
   const [searchFilters, setSearchFilters] = useState(initialProps.searchFilters);
   const [isLoading, setIsLoading] = useState(initialProps.isLoading);
+  const [reservation, setReservation] = useState(initialProps.reservation);
   const { data, loading } = useQuery(GET_PUBLICATIONS_SEARCH, {
     variables: {
       input: {
@@ -133,7 +177,9 @@ const PublicationProvider: FC = ({ children }) => {
         searchFilters,
         setSearchPublications,
         setSearchFilters,
-        isLoading
+        isLoading,
+        reservation,
+        setReservation
         // setPublicationsSearch,
         // publicationsSearch,
         // searchRefetch

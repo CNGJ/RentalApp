@@ -11,7 +11,7 @@ import { ModalContext } from '../../Context/ModalContext';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 const PublicationView: FC = () => {
-  const { searchPublications } = useContext(PublicationContext);
+  const { searchPublications, reservation, setReservation } = useContext(PublicationContext);
   const { setshowSpinner } = useContext(ModalContext);
   const [publication, setPublication] = useState(undefined as IPublication);
   const [getPublication, { data }] = useLazyQuery(GET_PUBLICATION_BY_ID);
@@ -40,7 +40,11 @@ const PublicationView: FC = () => {
   }, [data]);
 
   useEffect(() => {
-    if (publication) setshowSpinner(false);
+    if (publication) {
+      const reservationObject = { ...reservation, publication };
+      setReservation(reservationObject);
+      setshowSpinner(false);
+    }
   }, [publication]);
 
   return (
